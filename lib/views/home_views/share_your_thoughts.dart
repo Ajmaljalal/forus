@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class ShareYourThoughts extends StatelessWidget {
   const ShareYourThoughts({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override
@@ -34,13 +34,13 @@ class ShareYourThoughts extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: GestureDetector(
-            onTap: () {
-              print('clicked');
-            },
+            onTap: () {},
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Container(width: 300.0, child: Text('Share your thoughts...')),
+                Container(
+                  child: Text('Share your thoughts...'),
+                ),
                 _buildButtons(),
               ],
             ),

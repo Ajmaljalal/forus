@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:forus/utils/getDeviceType.dart';
 
 class HomeMainFeedPost extends StatefulWidget {
-  HomeMainFeedPost({Key key}) : super(key: key);
+  HomeMainFeedPost({Key? key}) : super(key: key);
 
   @override
   _HomeMainFeedPostState createState() => _HomeMainFeedPostState();
@@ -10,7 +11,14 @@ class HomeMainFeedPost extends StatefulWidget {
 class _HomeMainFeedPostState extends State<HomeMainFeedPost> {
   @override
   Widget build(BuildContext context) {
+    final String _deviceType = getDeviceType(ctx: context);
     return Card(
+      shape: RoundedRectangleBorder(
+        borderRadius: _deviceType == 'mobile'
+            ? BorderRadius.circular(0.0)
+            : BorderRadius.circular(8.0),
+      ),
+      elevation: _deviceType == 'mobile' ? 0.0 : 1.0,
       child: Padding(
         padding: const EdgeInsets.all(15.0),
         child: Column(
@@ -108,11 +116,12 @@ class _HomeMainFeedPostState extends State<HomeMainFeedPost> {
     );
   }
 
-  Widget _buildReactButton({Function callBack, String text, IconData icon}) {
+  Widget _buildReactButton(
+      {Function? callBack, required String text, IconData? icon}) {
     return Row(
       children: [
         IconButton(
-          onPressed: callBack,
+          onPressed: callBack as void Function()?,
           icon: Icon(icon),
           splashRadius: 0.1,
           constraints: const BoxConstraints(maxWidth: 38.0),
