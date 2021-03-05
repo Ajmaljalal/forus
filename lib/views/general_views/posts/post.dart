@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:forus/configs/color_palette.dart';
 import 'package:forus/data_models/models.dart';
+import 'package:forus/widgets/post_button.dart';
 import 'package:forus/widgets/profile_avatar.dart';
 import 'package:forus/widgets/responsive.dart';
 
@@ -18,16 +19,15 @@ class PostContainer extends StatelessWidget {
     final bool isDesktop = Responsive.isDesktop(context);
     return Card(
       margin: EdgeInsets.symmetric(
-        vertical: 5.0,
+        vertical: 8.0,
         horizontal: isDesktop ? 5.0 : 0.0,
       ),
-      elevation: isDesktop ? 1.0 : 0.0,
+      elevation: isDesktop ? 1.5 : 0.0,
       shape: isDesktop
           ? RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0))
           : null,
       child: Container(
         padding: const EdgeInsets.symmetric(vertical: 8.0),
-        color: Colors.white,
         child: Column(
           children: [
             Padding(
@@ -36,10 +36,10 @@ class PostContainer extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   _PostHeader(post: post),
-                  const SizedBox(height: 4.0),
+                  const SizedBox(height: 8.0),
                   Text(post.text),
                   post.imageUrl != null
-                      ? const SizedBox.shrink()
+                      ? const SizedBox(height: 8.0)
                       : const SizedBox(height: 6.0),
                 ],
               ),
@@ -165,73 +165,51 @@ class _PostStats extends StatelessWidget {
         ),
         const Divider(),
         Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            _PostButton(
-              icon: Icon(
-                Icons.thumb_up_alt_outlined,
-                color: Colors.grey[600],
-                size: 20.0,
-              ),
-              label: 'Like',
-              onTap: () => print('Like'),
+            _buildPostButtons(),
+            Padding(
+              padding: const EdgeInsets.only(right: 8.0),
+              child: Text('tip'),
             ),
-            _PostButton(
-              icon: Icon(
-                Icons.mode_comment_outlined,
-                color: Colors.grey[600],
-                size: 20.0,
-              ),
-              label: 'Comment',
-              onTap: () => print('Comment'),
-            ),
-            _PostButton(
-              icon: Icon(
-                Icons.reply_outlined,
-                color: Colors.grey[600],
-                size: 25.0,
-              ),
-              label: 'Share',
-              onTap: () => print('Share'),
-            )
           ],
-        ),
+        )
       ],
     );
   }
-}
 
-class _PostButton extends StatelessWidget {
-  final Icon icon;
-  final String label;
-  final Function() onTap;
-
-  const _PostButton({
-    Key? key,
-    required this.icon,
-    required this.label,
-    required this.onTap,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Expanded(
-      child: Material(
-        color: Colors.white,
-        child: InkWell(
-          onTap: onTap,
-          child: Container(
-            padding: const EdgeInsets.symmetric(horizontal: 12.0),
-            height: 25.0,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                icon,
-                const SizedBox(width: 4.0),
-                Text(label),
-              ],
+  Widget _buildPostButtons() {
+    return Container(
+      child: Row(
+        children: [
+          PostButton(
+            icon: Icon(
+              Icons.thumb_up_alt_outlined,
+              color: Colors.grey[600],
+              size: 20.0,
             ),
+            label: 'Like',
+            onTap: () => print('Like'),
           ),
-        ),
+          PostButton(
+            icon: Icon(
+              Icons.mode_comment_outlined,
+              color: Colors.grey[600],
+              size: 20.0,
+            ),
+            label: 'Comment',
+            onTap: () => print('Comment'),
+          ),
+          PostButton(
+            icon: Icon(
+              Icons.reply_outlined,
+              color: Colors.grey[600],
+              size: 25.0,
+            ),
+            label: 'Share',
+            onTap: () => print('Share'),
+          )
+        ],
       ),
     );
   }

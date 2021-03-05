@@ -6,7 +6,7 @@ import 'package:forus/views/general_views/posts/post.dart';
 import 'package:forus/configs/color_palette.dart';
 import 'package:forus/widgets/circled_button.dart';
 
-class HomeScreenMobile extends StatelessWidget {
+class HomeScreenMobile extends StatefulWidget {
   final TrackingScrollController scrollController;
 
   const HomeScreenMobile({
@@ -15,9 +15,17 @@ class HomeScreenMobile extends StatelessWidget {
   }) : super(key: key);
 
   @override
+  _HomeScreenMobileState createState() => _HomeScreenMobileState();
+}
+
+class _HomeScreenMobileState extends State<HomeScreenMobile>
+    with AutomaticKeepAliveClientMixin {
+  @override
   Widget build(BuildContext context) {
+    super.build(context);
+    print('mobile home');
     return CustomScrollView(
-      controller: scrollController,
+      controller: widget.scrollController,
       slivers: [
         SliverAppBar(
           brightness: Brightness.light,
@@ -76,4 +84,7 @@ class HomeScreenMobile extends StatelessWidget {
       ],
     );
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }

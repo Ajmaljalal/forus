@@ -11,6 +11,21 @@ class NavScreen extends StatefulWidget {
 }
 
 class _NavScreenState extends State<NavScreen> {
+  PageController _pageController = PageController();
+  int _selectedIndex = 0;
+
+  @override
+  void dispose() {
+    _pageController.dispose();
+    super.dispose();
+  }
+
+  void _onPageChange(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
   final List<Widget> _screens = [
     Home(),
     Scaffold(),
@@ -27,7 +42,6 @@ class _NavScreenState extends State<NavScreen> {
     Icons.notifications_none,
     Icons.menu,
   ];
-  int _selectedIndex = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -46,8 +60,10 @@ class _NavScreenState extends State<NavScreen> {
                 ),
               )
             : null,
-        body: IndexedStack(
-          index: _selectedIndex,
+        body: PageView(
+          controller: _pageController,
+          onPageChanged: _onPageChange,
+          physics: NeverScrollableScrollPhysics(),
           children: _screens,
         ),
         bottomNavigationBar: !Responsive.isDesktop(context)
@@ -57,7 +73,9 @@ class _NavScreenState extends State<NavScreen> {
                 child: CustomTabBar(
                   icons: _icons,
                   selectedIndex: _selectedIndex,
-                  onTap: (index) => setState(() => _selectedIndex = index),
+                  onTap: (index) => _pageController.jumpToPage(
+                    index,
+                  ),
                 ),
               )
             : const SizedBox.shrink(),

@@ -25,7 +25,6 @@ class _LeftSideBarState extends State<LeftSideBar> {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                SizedBox(height: 20.0),
                 _buildNavItem(item: 'Home', icon: Icons.home),
                 _buildNavItem(
                     item: 'My Wallet', icon: Icons.monetization_on_rounded),
