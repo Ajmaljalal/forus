@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:forus/data_models/models.dart';
+import 'package:forus/widgets/circled_button.dart';
 import 'package:forus/widgets/post_button.dart';
 import 'package:forus/widgets/profile_avatar.dart';
 import 'package:forus/widgets/responsive.dart';
@@ -133,9 +134,12 @@ class _PostStats extends StatelessWidget {
             children: [
               _buildPostButtons(),
               Padding(
-                padding: const EdgeInsets.only(right: 5.0),
-                child: const Text('tip'),
-              ),
+                  padding: const EdgeInsets.only(right: 5.0),
+                  child: CircleButton(
+                    icon: Icons.attach_money_rounded,
+                    iconSize: 20.0,
+                    onPressed: () {},
+                  )),
             ],
           ),
         )

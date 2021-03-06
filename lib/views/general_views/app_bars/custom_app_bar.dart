@@ -23,10 +23,10 @@ class CustomAppBar extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 20.0),
       height: 65.0,
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         color: Colors.white,
         boxShadow: const [
-          BoxShadow(
+          const BoxShadow(
             color: Colors.black12,
             offset: Offset(0, 2),
             blurRadius: 4.0,
@@ -37,7 +37,7 @@ class CustomAppBar extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Expanded(
-            child: Text(
+            child: const Text(
               'forus',
               style: const TextStyle(
                 color: ColorPalette.facebookBlue,
@@ -65,12 +65,13 @@ class CustomAppBar extends StatelessWidget {
                 const SizedBox(width: 12.0),
                 CircleButton(
                   icon: Icons.search,
-                  iconSize: 30.0,
+                  iconSize: 20.0,
                   onPressed: () => print('Search'),
                 ),
+                const SizedBox(width: 3.0),
                 CircleButton(
-                  icon: Icons.messenger_rounded,
-                  iconSize: 30.0,
+                  icon: Icons.notifications,
+                  iconSize: 20.0,
                   onPressed: () => print('Messenger'),
                 ),
               ],

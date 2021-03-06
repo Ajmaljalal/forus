@@ -23,9 +23,15 @@ class CircleButton extends StatelessWidget {
         shape: BoxShape.circle,
       ),
       child: IconButton(
-        icon: Icon(
-          icon,
-          color: color,
+        constraints: const BoxConstraints(
+          maxHeight: 35.0,
+          maxWidth: 35.0,
+        ),
+        icon: Center(
+          child: Icon(
+            icon,
+            color: color,
+          ),
         ),
         iconSize: iconSize,
         color: Colors.black,
