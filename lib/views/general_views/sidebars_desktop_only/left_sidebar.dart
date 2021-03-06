@@ -15,7 +15,7 @@ class _LeftSideBarState extends State<LeftSideBar> {
     return ConstrainedBox(
       constraints: BoxConstraints(
         maxWidth: 300.0,
-        minWidth: 200.0,
+        minWidth: 250.0,
       ),
       child: Container(
         width: MediaQuery.of(context).size.width * 0.3,
@@ -76,7 +76,10 @@ class _LeftSideBarState extends State<LeftSideBar> {
         icon,
         size: 30.0,
       ),
-      title: Text(item),
+      title: Text(
+        item,
+        overflow: TextOverflow.ellipsis,
+      ),
     );
   }
 

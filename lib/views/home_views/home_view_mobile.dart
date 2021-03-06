@@ -7,11 +7,9 @@ import 'package:forus/configs/color_palette.dart';
 import 'package:forus/widgets/circled_button.dart';
 
 class HomeScreenMobile extends StatefulWidget {
-  final TrackingScrollController scrollController;
 
   const HomeScreenMobile({
     Key? key,
-    required this.scrollController,
   }) : super(key: key);
 
   @override
@@ -25,7 +23,6 @@ class _HomeScreenMobileState extends State<HomeScreenMobile>
     super.build(context);
     print('mobile home');
     return CustomScrollView(
-      controller: widget.scrollController,
       slivers: [
         SliverAppBar(
           brightness: Brightness.light,

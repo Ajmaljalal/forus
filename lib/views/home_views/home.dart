@@ -9,24 +9,21 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  final TrackingScrollController _trackingScrollController =
-      TrackingScrollController();
-
-  @override
-  void dispose() {
-    _trackingScrollController.dispose();
-    super.dispose();
-  }
-
   @override
   Widget build(BuildContext context) {
+    final _padding = Responsive.isDesktop(context)
+        ? const EdgeInsets.only(top: 20.0)
+        : const EdgeInsets.only(top: 0.0);
     return GestureDetector(
       onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
-        body: Responsive(
-          mobile: HomeScreenMobile(scrollController: _trackingScrollController),
-          desktop:
-              HomeScreenDesktop(scrollController: _trackingScrollController),
+        backgroundColor: Colors.grey[200],
+        body: Padding(
+          padding: _padding,
+          child: Responsive(
+            mobile: HomeScreenMobile(),
+            desktop: HomeScreenDesktop(),
+          ),
         ),
       ),
     );

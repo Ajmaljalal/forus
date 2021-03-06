@@ -8,6 +8,12 @@ class Header extends StatefulWidget {
 }
 
 class _HeaderState extends State<Header> {
+  final _borderBottom = Border(
+    bottom: BorderSide(
+      color: Colors.grey[500]!,
+      width: 0.5,
+    ),
+  );
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -23,12 +29,7 @@ class _HeaderState extends State<Header> {
             blurRadius: 10,
           ),
         ],
-        border: Border(
-          bottom: BorderSide(
-            color: Colors.grey[500]!,
-            width: 0.5,
-          ),
-        ),
+        border: _borderBottom,
       ),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
