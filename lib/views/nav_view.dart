@@ -45,13 +45,13 @@ class _NavScreenState extends State<NavScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final Size screenSize = MediaQuery.of(context).size;
+    final Size _screenSize = MediaQuery.of(context).size;
     return DefaultTabController(
       length: _icons.length,
       child: Scaffold(
         appBar: Responsive.isDesktop(context)
             ? PreferredSize(
-                preferredSize: Size(screenSize.width, 100.0),
+                preferredSize: Size(_screenSize.width, 100.0),
                 child: CustomAppBar(
                   currentUser: currentUser,
                   icons: _icons,
@@ -63,7 +63,7 @@ class _NavScreenState extends State<NavScreen> {
         body: PageView(
           controller: _pageController,
           onPageChanged: _onPageChange,
-          physics: NeverScrollableScrollPhysics(),
+          physics: const NeverScrollableScrollPhysics(),
           children: _screens,
         ),
         bottomNavigationBar: !Responsive.isDesktop(context)

@@ -5,13 +5,21 @@ import 'package:forus/views/general_views/posts/create_new_post.dart';
 import 'package:forus/views/general_views/posts/post.dart';
 import 'package:forus/views/general_views/sidebars_desktop_only/left_sidebar.dart';
 
-class HomeScreenDesktop extends StatelessWidget {
+class HomeScreenDesktop extends StatefulWidget {
   const HomeScreenDesktop({
     Key? key,
   }) : super(key: key);
 
   @override
+  _HomeScreenDesktopState createState() => _HomeScreenDesktopState();
+}
+
+class _HomeScreenDesktopState extends State<HomeScreenDesktop>
+    with AutomaticKeepAliveClientMixin {
+  @override
   Widget build(BuildContext context) {
+    super.build(context);
+    print('home desktop build');
     return Row(
       children: [
         Flexible(
@@ -55,4 +63,7 @@ class HomeScreenDesktop extends StatelessWidget {
       ],
     );
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }
