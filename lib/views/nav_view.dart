@@ -26,7 +26,7 @@ class _NavScreenState extends State<NavScreen> {
     });
   }
 
-  final List<Widget> _screens = [
+  final List<Widget> _screens = const [
     Home(),
     Scaffold(),
     Scaffold(),

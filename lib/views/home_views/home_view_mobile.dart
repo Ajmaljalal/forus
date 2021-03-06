@@ -7,7 +7,6 @@ import 'package:forus/configs/color_palette.dart';
 import 'package:forus/widgets/circled_button.dart';
 
 class HomeScreenMobile extends StatefulWidget {
-
   const HomeScreenMobile({
     Key? key,
   }) : super(key: key);
@@ -41,14 +40,15 @@ class _HomeScreenMobileState extends State<HomeScreenMobile>
           actions: [
             CircleButton(
               icon: Icons.search,
-              iconSize: 30.0,
+              iconSize: 20.0,
               onPressed: () => print('Search'),
             ),
             CircleButton(
-              icon: Icons.messenger_outlined,
-              iconSize: 30.0,
+              icon: Icons.notifications,
+              iconSize: 20.0,
               onPressed: () => print('Messenger'),
             ),
+            const SizedBox(width: 12.0),
           ],
         ),
         SliverToBoxAdapter(
