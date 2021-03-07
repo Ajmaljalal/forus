@@ -40,7 +40,7 @@ class CustomAppBar extends StatelessWidget {
             child: const Text(
               'forus',
               style: const TextStyle(
-                color: ColorPalette.facebookBlue,
+                color: ColorPalette.primary,
                 fontSize: 32.0,
                 fontWeight: FontWeight.bold,
                 letterSpacing: -1.2,

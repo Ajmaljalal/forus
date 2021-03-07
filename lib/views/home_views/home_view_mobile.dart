@@ -29,7 +29,7 @@ class _HomeScreenMobileState extends State<HomeScreenMobile>
           title: Text(
             'forus',
             style: const TextStyle(
-              color: ColorPalette.facebookBlue,
+              color: ColorPalette.primary,
               fontSize: 28.0,
               fontWeight: FontWeight.bold,
               letterSpacing: -1.2,

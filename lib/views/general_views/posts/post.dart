@@ -40,15 +40,19 @@ class _PostContainerState extends State<PostContainer>
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  _PostHeader(post: widget.post),
-                  const SizedBox(height: 12.0),
-                  Text(widget.post.text),
+                  RepaintBoundary(child: _PostHeader(post: widget.post)),
+                  const SizedBox(height: 10.0),
+                  RepaintBoundary(child: Text(widget.post.text)),
                   const SizedBox(height: 17.0),
                 ],
               ),
             ),
-            CachedNetworkImage(imageUrl: widget.post.imageUrl),
-            _PostStats(post: widget.post),
+            RepaintBoundary(
+              child: Image.network(
+                widget.post.imageUrl,
+              ),
+            ),
+            RepaintBoundary(child: _PostStats(post: widget.post)),
           ],
         ),
       ),
@@ -56,7 +60,7 @@ class _PostContainerState extends State<PostContainer>
   }
 
   @override
-  bool get wantKeepAlive => true;
+  bool get wantKeepAlive => false;
 }
 
 class _PostHeader extends StatelessWidget {
@@ -71,7 +75,7 @@ class _PostHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        ProfileAvatar(imageUrl: post.user.imageUrl),
+        RepaintBoundary(child: ProfileAvatar(imageUrl: post.user.imageUrl)),
         const SizedBox(width: 8.0),
         Expanded(
           child: Column(

@@ -68,7 +68,7 @@ class _NavScreenState extends State<NavScreen> {
         ),
         bottomNavigationBar: !Responsive.isDesktop(context)
             ? Container(
-                padding: const EdgeInsets.only(bottom: 12.0),
+                padding: const EdgeInsets.only(bottom: 5.0),
                 color: Colors.white,
                 child: CustomTabBar(
                   icons: _icons,
