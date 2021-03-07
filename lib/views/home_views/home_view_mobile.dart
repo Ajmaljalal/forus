@@ -23,33 +23,35 @@ class _HomeScreenMobileState extends State<HomeScreenMobile>
     print('mobile home');
     return CustomScrollView(
       slivers: [
-        SliverAppBar(
-          brightness: Brightness.light,
-          backgroundColor: Colors.white,
-          title: Text(
-            'forus',
-            style: const TextStyle(
-              color: ColorPalette.primary,
-              fontSize: 28.0,
-              fontWeight: FontWeight.bold,
-              letterSpacing: -1.2,
+        RepaintBoundary(
+          child: SliverAppBar(
+            brightness: Brightness.light,
+            backgroundColor: Colors.white,
+            title: Text(
+              'forus',
+              style: const TextStyle(
+                color: ColorPalette.primary,
+                fontSize: 28.0,
+                fontWeight: FontWeight.bold,
+                letterSpacing: -1.2,
+              ),
             ),
+            centerTitle: false,
+            floating: true,
+            actions: [
+              CircleButton(
+                icon: Icons.search,
+                iconSize: 20.0,
+                onPressed: () => print('Search'),
+              ),
+              CircleButton(
+                icon: Icons.notifications,
+                iconSize: 20.0,
+                onPressed: () => print('Messenger'),
+              ),
+              const SizedBox(width: 12.0),
+            ],
           ),
-          centerTitle: false,
-          floating: true,
-          actions: [
-            CircleButton(
-              icon: Icons.search,
-              iconSize: 20.0,
-              onPressed: () => print('Search'),
-            ),
-            CircleButton(
-              icon: Icons.notifications,
-              iconSize: 20.0,
-              onPressed: () => print('Messenger'),
-            ),
-            const SizedBox(width: 12.0),
-          ],
         ),
         SliverToBoxAdapter(
           child: CreatePostContainer(currentUser: currentUser),
