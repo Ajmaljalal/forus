@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:forus/data_models/models.dart';
+import 'package:forus/data_models/ui_models.dart';
 import 'package:forus/mock/data.dart';
 import 'package:forus/views/general_views/posts/create_new_post.dart';
 import 'package:forus/views/general_views/posts/post.dart';
-import 'package:forus/views/general_views/sidebars_desktop_only/left_sidebar.dart';
+import 'package:forus/views/general_views/sidebars/left_sidebar.dart';
 
 class HomeScreenDesktop extends StatefulWidget {
   const HomeScreenDesktop({
@@ -16,6 +17,19 @@ class HomeScreenDesktop extends StatefulWidget {
 
 class _HomeScreenDesktopState extends State<HomeScreenDesktop>
     with AutomaticKeepAliveClientMixin {
+  final String wall = 'Home';
+
+  final _items = [
+    LeftSideMenuItem(text: 'Home', icon: Icons.home, onTap: () {}),
+    LeftSideMenuItem(text: 'My Wallet', icon: Icons.attach_money, onTap: () {}),
+    LeftSideMenuItem(
+        text: 'Friends', icon: Icons.people_alt_rounded, onTap: () {}),
+    LeftSideMenuItem(text: 'Pages', icon: Icons.pages, onTap: () {}),
+    LeftSideMenuItem(text: 'Broadcasts', icon: Icons.videocam, onTap: () {}),
+    LeftSideMenuItem(text: 'Rooms', icon: Icons.group_work_sharp, onTap: () {}),
+    LeftSideMenuItem(text: 'Market', icon: Icons.shopping_cart, onTap: () {}),
+  ];
+
   @override
   Widget build(BuildContext context) {
     super.build(context);
@@ -26,7 +40,10 @@ class _HomeScreenDesktopState extends State<HomeScreenDesktop>
           flex: 2,
           child: Align(
             alignment: Alignment.centerLeft,
-            child: LeftSideBar(),
+            child: LeftSideBar(
+              items: _items,
+              currentWall: wall,
+            ),
           ),
         ),
         Container(

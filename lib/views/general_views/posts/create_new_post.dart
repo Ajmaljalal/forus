@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
+import 'package:forus/configs/color_palette.dart';
 import 'package:forus/data_models/models.dart';
 import 'package:forus/widgets/circled_button.dart';
-import 'package:forus/widgets/profile_avatar.dart';
 import 'package:forus/widgets/responsive.dart';
 
 class CreatePostContainer extends StatelessWidget {
@@ -18,47 +19,49 @@ class CreatePostContainer extends StatelessWidget {
     return Card(
       margin: EdgeInsets.symmetric(horizontal: isDesktop ? 5.0 : 0.0),
       elevation: isDesktop ? 1.0 : 0.0,
-      shape: isDesktop
-          ? RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0))
-          : null,
       child: Container(
         padding: const EdgeInsets.fromLTRB(12.0, 8.0, 12.0, 8.0),
-        child: Column(
+        child: Row(
           children: [
-            Row(
-              children: [
-                Expanded(
-                  child: TextField(
-                    decoration: InputDecoration(
-                        hintText: 'Speak out loud with proud!',
-                        prefixIcon: Icon(Icons.speaker),
-                        border: InputBorder.none,
-                        hintStyle: TextStyle(
-                          height: 1.4,
-                        )),
-                  ),
+            Expanded(
+              child: InkWell(
+                hoverColor: Colors.transparent,
+                onTap: () {
+                  print('create post');
+                },
+                child: Row(
+                  children: [
+                    const Icon(
+                      Icons.speaker,
+                      color: ColorPalette.primary,
+                    ),
+                    const SizedBox(
+                      width: 5.0,
+                    ),
+                    const Text('Speak out loud with proud!'),
+                  ],
                 ),
-                Container(
-                  height: 40.0,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      CircleButton(
-                        icon: Icons.photo_library_outlined,
-                        iconSize: 18.0,
-                        color: Colors.indigo,
-                        onPressed: () {},
-                      ),
-                      CircleButton(
-                        icon: Icons.play_circle_outline,
-                        iconSize: 18.0,
-                        onPressed: () {},
-                        color: Colors.red,
-                      ),
-                    ],
+              ),
+            ),
+            Container(
+              height: 40.0,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  CircleButton(
+                    icon: Icons.photo_library_outlined,
+                    iconSize: 18.0,
+                    color: Colors.indigo,
+                    onPressed: () {},
                   ),
-                ),
-              ],
+                  CircleButton(
+                    icon: Icons.play_circle_outline,
+                    iconSize: 18.0,
+                    onPressed: () {},
+                    color: Colors.red,
+                  ),
+                ],
+              ),
             ),
           ],
         ),

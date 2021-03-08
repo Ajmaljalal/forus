@@ -1,4 +1,3 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:forus/data_models/models.dart';
 import 'package:forus/widgets/circled_button.dart';
@@ -27,7 +26,7 @@ class _PostContainerState extends State<PostContainer>
     final bool isDesktop = Responsive.isDesktop(context);
     return Card(
       margin: EdgeInsets.symmetric(
-        vertical: 8.0,
+        vertical: 7.0,
         horizontal: isDesktop ? 5.0 : 0.0,
       ),
       elevation: isDesktop ? 1.5 : 0.0,
@@ -109,6 +108,7 @@ class _PostHeader extends StatelessWidget {
         IconButton(
           icon: const Icon(Icons.more_horiz),
           onPressed: () => print('More'),
+          splashRadius: 20.0,
         ),
       ],
     );
@@ -131,7 +131,7 @@ class _PostStats extends StatelessWidget {
           height: 0.0,
         ),
         Padding(
-          padding: const EdgeInsets.fromLTRB(15.0, 12.0, 15.0, 5.0),
+          padding: const EdgeInsets.fromLTRB(15.0, 5.0, 15.0, 0.0),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.center,

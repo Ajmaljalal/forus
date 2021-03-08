@@ -11,16 +11,13 @@ class Home extends StatelessWidget {
     final _padding = Responsive.isDesktop(context)
         ? const EdgeInsets.only(top: 20.0)
         : const EdgeInsets.only(top: 0.0);
-    return GestureDetector(
-      onTap: () => FocusScope.of(context).unfocus(),
-      child: Scaffold(
-        backgroundColor: Colors.grey[200],
-        body: Padding(
-          padding: _padding,
-          child: Responsive(
-            mobile: HomeScreenMobile(),
-            desktop: HomeScreenDesktop(),
-          ),
+    return Scaffold(
+      backgroundColor: Colors.grey[200],
+      body: Padding(
+        padding: _padding,
+        child: Responsive(
+          mobile: HomeScreenMobile(),
+          desktop: HomeScreenDesktop(),
         ),
       ),
     );
