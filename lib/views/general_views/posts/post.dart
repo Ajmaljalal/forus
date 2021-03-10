@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:forus/data_models/models.dart';
+import 'package:forus/models/models.dart';
 import 'package:forus/widgets/circled_button.dart';
 import 'package:forus/widgets/post_button.dart';
 import 'package:forus/widgets/profile_avatar.dart';

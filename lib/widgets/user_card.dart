@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:forus/data_models/user.dart';
+import 'package:forus/models/user.dart';
 import 'package:forus/widgets/profile_avatar.dart';
 
 class UserCard extends StatelessWidget {

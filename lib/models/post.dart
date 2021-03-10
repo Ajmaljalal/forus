@@ -1,4 +1,4 @@
-import 'package:forus/data_models/user.dart';
+import 'package:forus/models/user.dart';
 
 class Post {
   final User user;

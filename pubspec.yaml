@@ -31,6 +31,7 @@ dependencies:
 
   cached_network_image: ^3.0.0-nullsafety
   material_design_icons_flutter: ^4.0.5855
+  get: ^4.0.0-nullsafety.2
 
 dev_dependencies:
   flutter_test:

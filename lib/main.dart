@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:forus/views/nav_view.dart';
+import 'package:get/get.dart';
 
 void main() {
   // debugRepaintRainbowEnabled = true;
@@ -17,7 +18,7 @@ void main() {
 class Application extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       // checkerboardRasterCacheImages: true,
       title: 'Forus',

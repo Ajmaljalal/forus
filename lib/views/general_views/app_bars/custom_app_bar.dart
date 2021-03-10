@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:forus/configs/color_palette.dart';
-import 'package:forus/data_models/models.dart';
+import 'package:forus/models/models.dart';
 import 'package:forus/widgets/circled_button.dart';
 import 'package:forus/widgets/user_card.dart';
 

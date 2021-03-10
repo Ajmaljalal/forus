@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:forus/data_models/ui_models.dart';
+import 'package:forus/controllers/home_controllers/Left_menu_controller.dart';
+import 'package:forus/models/ui_models.dart';
+import 'package:get/get.dart';
 
 class LeftSideBar extends StatefulWidget {
   final String currentWall;
@@ -20,6 +22,7 @@ class _LeftSideBarState extends State<LeftSideBar>
   @override
   Widget build(BuildContext context) {
     super.build(context);
+    print('built left side menue');
     return ConstrainedBox(
       constraints: const BoxConstraints(
         maxWidth: 300.0,
@@ -70,19 +73,27 @@ class _LeftSideBarState extends State<LeftSideBar>
     required LeftSideMenuItem item,
     required String wall,
   }) {
-    return ListTile(
-      onTap: item.onTap,
-      selectedTileColor: Colors.white,
-      selected: wall == item.text ? true : false,
-      horizontalTitleGap: 5.0,
-      leading: Icon(
-        item.icon,
-        size: 30.0,
-      ),
-      title: Text(
-        item.text,
-        overflow: TextOverflow.ellipsis,
-      ),
+    return GetBuilder<LeftMenueController>(
+      init: LeftMenueController(),
+      builder: (ctl) {
+        return ListTile(
+          onTap: () {
+            ctl.changeRout(rout: item.text);
+          },
+          selectedTileColor: Colors.white,
+          hoverColor: Colors.white,
+          horizontalTitleGap: 5.0,
+          leading: Icon(
+            item.icon,
+            size: 30.0,
+            color: Colors.indigo,
+          ),
+          title: Text(
+            item.text,
+            overflow: TextOverflow.ellipsis,
+          ),
+        );
+      },
     );
   }
 

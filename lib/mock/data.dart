@@ -1,4 +1,4 @@
-import 'package:forus/data_models/models.dart';
+import 'package:forus/models/models.dart';
 
 final User currentUser = User(
   name: 'Marcus Ng',
