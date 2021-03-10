@@ -4,7 +4,8 @@ import 'package:forus/models/ui_models.dart';
 import 'package:forus/mock/data.dart';
 import 'package:forus/views/general_views/posts/create_new_post.dart';
 import 'package:forus/views/general_views/posts/post.dart';
-import 'package:forus/views/general_views/sidebars/left_sidebar.dart';
+import 'package:forus/views/general_views/sidebars/left_side_nav_bar.dart';
+import 'package:forus/views/home_views/online_friends_list.dart';
 
 class HomeScreenDesktop extends StatefulWidget {
   const HomeScreenDesktop({
@@ -71,9 +72,35 @@ class _HomeScreenDesktopState extends State<HomeScreenDesktop>
           flex: 2,
           child: Align(
             alignment: Alignment.centerRight,
-            child: Padding(
-              padding: const EdgeInsets.all(12.0),
-              // child: ContactsList(users: onlineUsers),
+            child: Container(
+              width: 300.0,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Expanded(
+                    child: Text(
+                      'Hot Topics',
+                      style: const TextStyle(
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                  const Divider(),
+                  Expanded(
+                    child: Text(
+                      'Promotions',
+                      style: const TextStyle(
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                  const Divider(),
+                  Expanded(
+                    flex: 1,
+                    child: OnlineFriendsList(users: onlineUsers),
+                  ),
+                ],
+              ),
             ),
           ),
         ),
