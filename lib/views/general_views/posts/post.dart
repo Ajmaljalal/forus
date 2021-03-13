@@ -136,12 +136,13 @@ class _PostStats extends StatelessWidget {
             children: [
               _buildPostButtons(),
               Padding(
-                  padding: const EdgeInsets.only(right: 5.0),
-                  child: CircleButton(
-                    icon: Icons.attach_money_rounded,
-                    iconSize: 20.0,
-                    onPressed: () {},
-                  )),
+                padding: const EdgeInsets.only(right: 5.0),
+                child: CircleButton(
+                  icon: Icons.attach_money_rounded,
+                  iconSize: 20.0,
+                  onPressed: () {},
+                ),
+              ),
             ],
           ),
         )

@@ -35,7 +35,7 @@ class _LeftSideBarState extends State<LeftSideBar>
         ),
       ),
       constraints: const BoxConstraints(
-        maxWidth: 250.0,
+        maxWidth: 280.0,
       ),
       child: Scrollbar(
         child: ListView(
