@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:forus/controllers/home_controllers/main_feed_controller.dart';
 import 'package:forus/models/models.dart';
 import 'package:forus/models/ui_models.dart';
 import 'package:forus/mock/data.dart';
@@ -6,6 +7,7 @@ import 'package:forus/views/general_views/posts/create_new_post.dart';
 import 'package:forus/views/general_views/posts/post.dart';
 import 'package:forus/views/general_views/sidebars/left_side_nav_bar.dart';
 import 'package:forus/views/home_views/online_friends_list.dart';
+import 'package:get/get.dart';
 
 class HomeScreenDesktop extends StatefulWidget {
   const HomeScreenDesktop({
@@ -32,22 +34,47 @@ class _HomeScreenDesktopState extends State<HomeScreenDesktop>
   ];
 
   @override
+  void initState() {
+    Get.put(MainFeedController());
+    final MainFeedController ctrl = Get.find();
+    ctrl.fetchPosts();
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     super.build(context);
     print('home desktop build');
     return Row(
       children: [
-        Flexible(
-          flex: 2,
-          child: Align(
-            alignment: Alignment.centerLeft,
-            child: LeftSideBar(
-              items: _items,
-              currentWall: wall,
-            ),
-          ),
+        _buildLeft(),
+        const SizedBox(width: 10.0),
+        _buildMiddle(),
+        const SizedBox(width: 10.0),
+        _buildRight(),
+      ],
+    );
+  }
+
+  Widget _buildLeft() {
+    return Expanded(
+      flex: 1,
+      child: Align(
+        alignment: Alignment.centerLeft,
+        child: LeftSideBar(
+          items: _items,
+          currentWall: wall,
         ),
-        Container(
+      ),
+    );
+  }
+
+  Widget _buildMiddle() {
+    return Expanded(
+      flex: 2,
+      child: Align(
+        alignment: Alignment.center,
+        child: Container(
           width: 680.0,
           child: Column(
             mainAxisSize: MainAxisSize.min,
@@ -56,11 +83,16 @@ class _HomeScreenDesktopState extends State<HomeScreenDesktop>
               Expanded(
                 child: Container(
                   margin: const EdgeInsets.only(top: 10.0),
-                  child: ListView.builder(
-                    itemCount: posts.length,
-                    itemBuilder: (context, index) {
-                      final Post post = posts[index];
-                      return PostContainer(post: post);
+                  child: GetBuilder<MainFeedController>(
+                    init: MainFeedController(),
+                    builder: (ctrl) {
+                      return ListView.builder(
+                        itemCount: ctrl.newsFeedPosts.length,
+                        itemBuilder: (context, index) {
+                          final Post post = ctrl.newsFeedPosts[index];
+                          return PostContainer(post: post);
+                        },
+                      );
                     },
                   ),
                 ),
@@ -68,43 +100,47 @@ class _HomeScreenDesktopState extends State<HomeScreenDesktop>
             ],
           ),
         ),
-        Flexible(
-          flex: 2,
-          child: Align(
-            alignment: Alignment.centerRight,
-            child: Container(
-              width: 300.0,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Expanded(
-                    child: Text(
-                      'Hot Topics',
-                      style: const TextStyle(
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
+      ),
+      // ),
+    );
+  }
+
+  Widget _buildRight() {
+    return Expanded(
+      flex: 1,
+      child: Align(
+        alignment: Alignment.centerRight,
+        child: Container(
+          width: 300.0,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Expanded(
+                child: Text(
+                  'Hot Topics',
+                  style: const TextStyle(
+                    fontWeight: FontWeight.bold,
                   ),
-                  const Divider(),
-                  Expanded(
-                    child: Text(
-                      'Promotions',
-                      style: const TextStyle(
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                  const Divider(),
-                  Expanded(
-                    flex: 1,
-                    child: OnlineFriendsList(users: onlineUsers),
-                  ),
-                ],
+                ),
               ),
-            ),
+              const Divider(),
+              Expanded(
+                child: Text(
+                  'Promotions',
+                  style: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+              const Divider(),
+              Expanded(
+                flex: 1,
+                child: OnlineFriendsList(users: onlineUsers),
+              ),
+            ],
           ),
         ),
-      ],
+      ),
     );
   }
 

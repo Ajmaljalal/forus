@@ -28,29 +28,26 @@ class _LeftSideBarState extends State<LeftSideBar>
         maxWidth: 300.0,
         minWidth: 250.0,
       ),
-      child: Container(
-        height: MediaQuery.of(context).size.height * 1 - 58.0,
-        child: Scrollbar(
-          child: ListView(
-            children: [
-              ..._buildNavItems(),
-              const Divider(),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(10.0),
-                    child: const Text(
-                      'Sponsered',
-                      style: const TextStyle(
-                        fontWeight: FontWeight.bold,
-                      ),
+      child: Scrollbar(
+        child: ListView(
+          children: [
+            ..._buildNavItems(),
+            const Divider(),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: const Text(
+                    'Sponsered',
+                    style: const TextStyle(
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
-                ],
-              ),
-            ],
-          ),
+                ),
+              ],
+            ),
+          ],
         ),
       ),
     );

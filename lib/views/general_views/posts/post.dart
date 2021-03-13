@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:forus/models/models.dart';
 import 'package:forus/widgets/circled_button.dart';
@@ -47,8 +48,10 @@ class _PostContainerState extends State<PostContainer>
               ),
             ),
             RepaintBoundary(
-              child: Image.network(
-                widget.post.imageUrl,
+              child: CachedNetworkImage(
+                filterQuality: FilterQuality.medium,
+                imageUrl: widget.post.imageUrl,
+                placeholder: (context, url) => CircularProgressIndicator(),
               ),
             ),
             RepaintBoundary(child: _PostStats(post: widget.post)),
