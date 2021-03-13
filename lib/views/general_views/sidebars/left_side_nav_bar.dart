@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:forus/configs/color_palette.dart';
 import 'package:forus/controllers/home_controllers/Left_menu_controller.dart';
 import 'package:forus/models/ui_models.dart';
 import 'package:get/get.dart';
@@ -23,10 +24,18 @@ class _LeftSideBarState extends State<LeftSideBar>
   Widget build(BuildContext context) {
     super.build(context);
     print('built left side menue');
-    return ConstrainedBox(
+    return Container(
+      decoration: BoxDecoration(
+        color: Colors.white,
+        border: Border(
+          right: BorderSide(
+            color: Colors.grey.shade300,
+            width: 1.0,
+          ),
+        ),
+      ),
       constraints: const BoxConstraints(
-        maxWidth: 300.0,
-        minWidth: 250.0,
+        maxWidth: 250.0,
       ),
       child: Scrollbar(
         child: ListView(

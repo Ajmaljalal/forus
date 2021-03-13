@@ -8,17 +8,11 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     print('home build');
-    final _padding = Responsive.isDesktop(context)
-        ? const EdgeInsets.only(top: 20.0)
-        : const EdgeInsets.only(top: 0.0);
     return Scaffold(
-      backgroundColor: Colors.grey[200],
-      body: Padding(
-        padding: _padding,
-        child: Responsive(
-          mobile: HomeScreenMobile(),
-          desktop: HomeScreenDesktop(),
-        ),
+      backgroundColor: Colors.grey[100],
+      body: Responsive(
+        mobile: HomeScreenMobile(),
+        desktop: HomeScreenDesktop(),
       ),
     );
   }

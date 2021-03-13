@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:forus/mock/data.dart';
 import 'package:forus/views/home_views/home.dart';
 import 'package:forus/widgets/responsive.dart';
-import 'general_views/app_bars/custom_app_bar.dart';
+import 'general_views/desktop_header/header.dart';
 import 'general_views/tab_bars/custom_tab_bar.dart';
 
 class NavScreen extends StatefulWidget {
@@ -34,7 +34,7 @@ class _NavScreenState extends State<NavScreen> {
     Scaffold(),
     Scaffold(),
   ];
-  final List<IconData> _icons = const [
+  final List<IconData> _mobileIcons = const [
     Icons.home,
     Icons.ondemand_video,
     Icons.account_circle_outlined,
@@ -43,18 +43,26 @@ class _NavScreenState extends State<NavScreen> {
     Icons.menu,
   ];
 
+  final List<IconData> _desktopIcons = const [
+    Icons.home,
+    Icons.settings,
+    Icons.search_rounded
+  ];
+
   @override
   Widget build(BuildContext context) {
     final Size _screenSize = MediaQuery.of(context).size;
     return DefaultTabController(
-      length: _icons.length,
+      length: Responsive.isDesktop(context)
+          ? _desktopIcons.length
+          : _mobileIcons.length,
       child: Scaffold(
         appBar: Responsive.isDesktop(context)
             ? PreferredSize(
                 preferredSize: Size(_screenSize.width, 100.0),
-                child: CustomAppBar(
+                child: Header(
                   currentUser: currentUser,
-                  icons: _icons,
+                  icons: _desktopIcons,
                   selectedIndex: _selectedIndex,
                   onTap: (index) => setState(() => _selectedIndex = index),
                 ),
@@ -68,10 +76,9 @@ class _NavScreenState extends State<NavScreen> {
         ),
         bottomNavigationBar: !Responsive.isDesktop(context)
             ? Container(
-                padding: const EdgeInsets.only(bottom: 5.0),
                 color: Colors.white,
                 child: CustomTabBar(
-                  icons: _icons,
+                  icons: _mobileIcons,
                   selectedIndex: _selectedIndex,
                   onTap: (index) => _pageController.jumpToPage(
                     index,

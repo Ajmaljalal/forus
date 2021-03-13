@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class ColorPalette {
   static const Color scaffold = Color(0xFFF0F2F5);
 
-  static const Color primary = Colors.indigo;
+  static const Color primary = Colors.deepPurple;
 
   static const LinearGradient createRoomGradient = LinearGradient(
     colors: [Color(0xFF496AE1), Color(0xFFCE48B1)],

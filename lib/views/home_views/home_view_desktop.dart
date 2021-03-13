@@ -75,7 +75,7 @@ class _HomeScreenDesktopState extends State<HomeScreenDesktop>
       child: Align(
         alignment: Alignment.center,
         child: Container(
-          width: 680.0,
+          width: 700.0,
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
@@ -111,7 +111,19 @@ class _HomeScreenDesktopState extends State<HomeScreenDesktop>
       child: Align(
         alignment: Alignment.centerRight,
         child: Container(
-          width: 300.0,
+          padding: const EdgeInsets.all(8.0),
+          constraints: const BoxConstraints(
+            maxWidth: 300.0,
+          ),
+          decoration: BoxDecoration(
+            // color: Colors.white,
+            border: Border(
+              left: BorderSide(
+                color: Colors.grey.shade300,
+                width: 1.0,
+              ),
+            ),
+          ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
