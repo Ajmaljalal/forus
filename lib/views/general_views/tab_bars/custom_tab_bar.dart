@@ -23,13 +23,13 @@ class CustomTabBar extends StatelessWidget {
         border: isBottomIndicator
             ? const Border(
                 bottom: const BorderSide(
-                  color: ColorPalette.primary,
+                  color: ColorPalette.secondary,
                   width: 3.0,
                 ),
               )
             : const Border(
                 top: const BorderSide(
-                  color: ColorPalette.primary,
+                  color: ColorPalette.secondary,
                   width: 3.0,
                 ),
               ),
@@ -42,8 +42,8 @@ class CustomTabBar extends StatelessWidget {
                   icon: Icon(
                     e,
                     color: i == selectedIndex
-                        ? ColorPalette.primary
-                        : Colors.black45,
+                        ? ColorPalette.secondary
+                        : ColorPalette.primary.withOpacity(0.5),
                     size: 30.0,
                   ),
                 ),

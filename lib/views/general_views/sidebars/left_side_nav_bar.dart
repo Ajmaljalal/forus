@@ -29,8 +29,8 @@ class _LeftSideBarState extends State<LeftSideBar>
         color: Colors.white,
         border: Border(
           right: BorderSide(
-            color: Colors.grey.shade300,
-            width: 1.0,
+            color: Colors.grey.shade700,
+            width: 0.2,
           ),
         ),
       ),
@@ -80,21 +80,32 @@ class _LeftSideBarState extends State<LeftSideBar>
     return GetBuilder<LeftMenueController>(
       init: LeftMenueController(),
       builder: (ctl) {
-        return ListTile(
-          onTap: () {
-            ctl.changeRout(rout: item.text);
-          },
-          selectedTileColor: Colors.white,
-          hoverColor: Colors.white,
-          horizontalTitleGap: 5.0,
-          leading: Icon(
-            item.icon,
-            size: 30.0,
-            color: Colors.indigo,
-          ),
-          title: Text(
-            item.text,
-            overflow: TextOverflow.ellipsis,
+        return Material(
+          color: Colors.white,
+          child: ListTile(
+            onTap: () {
+              ctl.changeRout(rout: item.text);
+            },
+            // selectedTileColor: ColorPalette.selected.withOpacity(0.3),
+            // hoverColor: ColorPalette.hover.withOpacity(0.3),
+            selected: wall == item.text ? true : false,
+            horizontalTitleGap: 5.0,
+            leading: Icon(
+              item.icon,
+              size: 30.0,
+              color: wall == item.text
+                  ? ColorPalette.secondary
+                  : ColorPalette.primary.withOpacity(0.5),
+            ),
+            title: Text(
+              item.text,
+              overflow: TextOverflow.ellipsis,
+              style: TextStyle(
+                color: wall == item.text
+                    ? ColorPalette.secondary
+                    : ColorPalette.primary.withOpacity(0.8),
+              ),
+            ),
           ),
         );
       },

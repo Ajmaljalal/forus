@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:forus/configs/color_palette.dart';
 import 'package:forus/views/home_views/home_view_desktop.dart';
 import 'package:forus/views/home_views/home_view_mobile.dart';
 import 'package:forus/widgets/responsive.dart';
@@ -9,7 +10,7 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     print('home build');
     return Scaffold(
-      backgroundColor: Colors.grey[100],
+      backgroundColor: ColorPalette.scaffold,
       body: Responsive(
         mobile: HomeScreenMobile(),
         desktop: HomeScreenDesktop(),

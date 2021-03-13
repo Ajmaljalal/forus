@@ -75,6 +75,7 @@ class _HomeScreenDesktopState extends State<HomeScreenDesktop>
       child: Align(
         alignment: Alignment.center,
         child: Container(
+          margin: const EdgeInsets.only(top: 8.0),
           width: 700.0,
           child: Column(
             mainAxisSize: MainAxisSize.min,
@@ -116,11 +117,11 @@ class _HomeScreenDesktopState extends State<HomeScreenDesktop>
             maxWidth: 300.0,
           ),
           decoration: BoxDecoration(
-            // color: Colors.white,
+            color: Colors.white,
             border: Border(
               left: BorderSide(
-                color: Colors.grey.shade300,
-                width: 1.0,
+                color: Colors.grey.shade700,
+                width: 0.2,
               ),
             ),
           ),

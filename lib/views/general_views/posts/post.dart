@@ -24,13 +24,8 @@ class _PostContainerState extends State<PostContainer>
   Widget build(BuildContext context) {
     super.build(context);
     print('post builds');
-    final bool isDesktop = Responsive.isDesktop(context);
     return Card(
-      margin: EdgeInsets.symmetric(
-        vertical: 7.0,
-        horizontal: isDesktop ? 5.0 : 0.0,
-      ),
-      elevation: isDesktop ? 1.5 : 0.0,
+      elevation: 0.0,
       child: Container(
         padding: const EdgeInsets.symmetric(vertical: 8.0),
         child: Column(
