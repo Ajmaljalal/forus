@@ -23,7 +23,7 @@ class Header extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 20.0),
-      height: 65.0,
+      height: 52.0,
       decoration: BoxDecoration(
         color: Colors.white,
         border: Border(

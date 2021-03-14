@@ -4,6 +4,9 @@ import 'package:forus/configs/color_palette.dart';
 import 'package:forus/models/models.dart';
 import 'package:forus/widgets/circled_button.dart';
 import 'package:forus/widgets/responsive.dart';
+import 'package:get/get.dart';
+
+import 'create_new_post_modal.dart';
 
 class CreatePostContainer extends StatelessWidget {
   final User currentUser;
@@ -12,6 +15,14 @@ class CreatePostContainer extends StatelessWidget {
     Key? key,
     required this.currentUser,
   }) : super(key: key);
+
+  openCreateNewPostModal() {
+    Get.defaultDialog(
+      title: 'Speak Out',
+      radius: 10.0,
+      content: CreateNewPostModal(),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +38,7 @@ class CreatePostContainer extends StatelessWidget {
               child: InkWell(
                 hoverColor: Colors.transparent,
                 onTap: () {
-                  print('create post');
+                  openCreateNewPostModal();
                 },
                 child: Row(
                   children: [
@@ -51,14 +62,14 @@ class CreatePostContainer extends StatelessWidget {
                   CircleButton(
                     icon: Icons.photo_library_outlined,
                     iconSize: 18.0,
-                    color: Colors.indigo,
+                    color: ColorPalette.primary,
                     onPressed: () {},
                   ),
                   CircleButton(
                     icon: Icons.play_circle_outline,
                     iconSize: 18.0,
                     onPressed: () {},
-                    color: Colors.red,
+                    color: ColorPalette.secondary,
                   ),
                 ],
               ),
