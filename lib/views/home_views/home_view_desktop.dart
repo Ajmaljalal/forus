@@ -88,6 +88,7 @@ class _HomeScreenDesktopState extends State<HomeScreenDesktop>
                     init: MainFeedController(),
                     builder: (ctrl) {
                       return ListView.builder(
+                        cacheExtent: MediaQuery.of(context).size.height * 2,
                         itemCount: ctrl.newsFeedPosts.length,
                         itemBuilder: (context, index) {
                           final Post post = ctrl.newsFeedPosts[index];

@@ -4,7 +4,6 @@ import 'package:forus/models/models.dart';
 import 'package:forus/widgets/circled_button.dart';
 import 'package:forus/widgets/post_button.dart';
 import 'package:forus/widgets/profile_avatar.dart';
-import 'package:forus/widgets/responsive.dart';
 
 class PostContainer extends StatefulWidget {
   final Post post;
