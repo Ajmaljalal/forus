@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
+import 'package:get/get.dart';
 import 'package:forus/configs/color_palette.dart';
 import 'package:forus/models/models.dart';
 import 'package:forus/widgets/circled_button.dart';
 import 'package:forus/widgets/responsive.dart';
-import 'package:get/get.dart';
 
 import 'create_new_post_modal.dart';
 
@@ -19,7 +18,7 @@ class CreatePostContainer extends StatelessWidget {
   openCreateNewPostModal() {
     Get.defaultDialog(
       title: 'Speak Out',
-      radius: 10.0,
+      radius: 5.0,
       content: CreateNewPostModal(),
     );
   }
@@ -34,48 +33,57 @@ class CreatePostContainer extends StatelessWidget {
         padding: const EdgeInsets.fromLTRB(12.0, 8.0, 12.0, 8.0),
         child: Row(
           children: [
-            Expanded(
-              child: InkWell(
-                hoverColor: Colors.transparent,
-                onTap: () {
-                  openCreateNewPostModal();
-                },
-                child: Row(
-                  children: [
-                    const Icon(
-                      Icons.speaker,
-                      color: ColorPalette.primary,
-                    ),
-                    const SizedBox(
-                      width: 5.0,
-                    ),
-                    const Text('Speak out loud with proud!'),
-                  ],
-                ),
-              ),
-            ),
-            Container(
-              height: 40.0,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  CircleButton(
-                    icon: Icons.photo_library_outlined,
-                    iconSize: 18.0,
-                    color: ColorPalette.primary,
-                    onPressed: () {},
-                  ),
-                  CircleButton(
-                    icon: Icons.play_circle_outline,
-                    iconSize: 18.0,
-                    onPressed: () {},
-                    color: ColorPalette.secondary,
-                  ),
-                ],
-              ),
-            ),
+            _buildSpeakoutButton(),
+            _buildAttachmentButtons(),
           ],
         ),
+      ),
+    );
+  }
+
+  _buildSpeakoutButton() {
+    return Expanded(
+      child: InkWell(
+        hoverColor: Colors.transparent,
+        splashColor: Colors.transparent,
+        onTap: () {
+          openCreateNewPostModal();
+        },
+        child: Row(
+          children: [
+            const Icon(
+              Icons.speaker,
+              color: ColorPalette.secondary,
+            ),
+            const SizedBox(
+              width: 5.0,
+            ),
+            const Text('Speak out loud with proud!'),
+          ],
+        ),
+      ),
+    );
+  }
+
+  _buildAttachmentButtons() {
+    return Container(
+      height: 40.0,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          CircleButton(
+            icon: Icons.photo_library_outlined,
+            iconSize: 18.0,
+            color: ColorPalette.primary,
+            onPressed: () {},
+          ),
+          CircleButton(
+            icon: Icons.play_circle_outline,
+            iconSize: 18.0,
+            onPressed: () {},
+            color: ColorPalette.primary,
+          ),
+        ],
       ),
     );
   }

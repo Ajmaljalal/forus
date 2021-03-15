@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:forus/configs/color_palette.dart';
 import 'package:forus/widgets/circled_button.dart';
-import 'package:get/get.dart';
 
 class CreateNewPostModal extends StatefulWidget {
   CreateNewPostModal({Key? key}) : super(key: key);
@@ -11,6 +11,14 @@ class CreateNewPostModal extends StatefulWidget {
 }
 
 class _CreateNewPostModalState extends State<CreateNewPostModal> {
+  final TextEditingController _postInputController = TextEditingController();
+
+  @override
+  void dispose() {
+    _postInputController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -28,17 +36,23 @@ class _CreateNewPostModalState extends State<CreateNewPostModal> {
     return Center(
       child: Material(
         child: Container(
-          width: 600.0,
+          width: 500.0,
           height: 250.0,
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: TextFormField(
+              controller: _postInputController,
               maxLines: null,
               minLines: null,
               expands: true,
               autofocus: true,
               decoration: const InputDecoration(
                 hintText: 'Speak out your mind!',
+                border: InputBorder.none,
+                focusedBorder: InputBorder.none,
+                enabledBorder: InputBorder.none,
+                errorBorder: InputBorder.none,
+                disabledBorder: InputBorder.none,
               ),
             ),
           ),
@@ -56,55 +70,69 @@ class _CreateNewPostModalState extends State<CreateNewPostModal> {
         children: [
           Row(
             children: [
-              CircleButton(
+              _createPostButton(
                 icon: Icons.photo_library_outlined,
-                iconSize: 18.0,
-                color: ColorPalette.primary,
-                onPressed: () {},
+                onTap: () {},
               ),
-              CircleButton(
+              _createPostButton(
                 icon: Icons.play_circle_outline,
-                iconSize: 18.0,
-                color: ColorPalette.primary,
-                onPressed: () {},
+                onTap: () {},
               ),
-              CircleButton(
+              _createPostButton(
                 icon: Icons.emoji_emotions_outlined,
-                iconSize: 18.0,
-                color: ColorPalette.primary,
-                onPressed: () {},
+                onTap: () {},
               ),
             ],
           ),
           Row(
             children: [
-              TextButton(
-                onPressed: () {
+              _createAttachmentButton(
+                text: 'Cancel',
+                color: ColorPalette.secondary,
+                onTap: () {
                   Get.back();
                 },
-                child: Text(
-                  'Cancel',
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                style: TextButton.styleFrom(primary: ColorPalette.secondary),
               ),
-              const SizedBox(width: 8.0),
-              TextButton(
-                onPressed: () {},
-                child: Text(
-                  'Post',
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                style: TextButton.styleFrom(primary: ColorPalette.primary),
+              _createAttachmentButton(
+                text: 'Post',
+                color: ColorPalette.primary,
+                onTap: () {
+                  print(_postInputController.text);
+                },
               ),
             ],
           ),
         ],
       ),
+    );
+  }
+
+  _createAttachmentButton({
+    required String text,
+    required Function()? onTap,
+    required color,
+  }) {
+    return TextButton(
+      onPressed: () {
+        Get.back();
+      },
+      child: Text(
+        text,
+        style: TextStyle(fontWeight: FontWeight.bold),
+      ),
+      style: TextButton.styleFrom(primary: color),
+    );
+  }
+
+  _createPostButton({
+    required Function() onTap,
+    required IconData icon,
+  }) {
+    return CircleButton(
+      icon: icon,
+      iconSize: 18.0,
+      color: ColorPalette.primary,
+      onPressed: onTap,
     );
   }
 }
