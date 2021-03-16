@@ -107,7 +107,7 @@ final List<User> onlineUsers = [
   ),
 ];
 
-final List<Post> posts = [
+List<Post> posts = [
   Post(
     user: currentUser,
     text: 'Check out these cool puppers',

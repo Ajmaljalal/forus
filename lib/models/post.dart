@@ -3,7 +3,7 @@ import 'package:forus/models/user.dart';
 class Post {
   final User user;
   final String text;
-  final String dateTime;
+  final String? dateTime;
   final String imageUrl;
   final int likes;
   final int comments;
@@ -12,7 +12,7 @@ class Post {
   const Post({
     required this.user,
     required this.text,
-    required this.dateTime,
+    this.dateTime,
     required this.imageUrl,
     required this.likes,
     required this.comments,

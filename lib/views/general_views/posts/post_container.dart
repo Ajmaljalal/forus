@@ -1,5 +1,6 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:cached_network_image/cached_network_image.dart';
+// import 'package:palette_generator/palette_generator.dart';
 import 'package:forus/models/models.dart';
 import 'package:forus/widgets/circled_button.dart';
 import 'package:forus/widgets/post_button.dart';
@@ -19,6 +20,13 @@ class PostContainer extends StatefulWidget {
 
 class _PostContainerState extends State<PostContainer>
     with AutomaticKeepAliveClientMixin {
+  // Calculate dominant color from ImageProvider
+  // Future<Color> getImagePalette(ImageProvider imageProvider) async {
+  //   final PaletteGenerator paletteGenerator =
+  //       await PaletteGenerator.fromImageProvider(imageProvider);
+  //   return paletteGenerator.lightMutedColor!.color;
+  // }
+
   @override
   Widget build(BuildContext context) {
     super.build(context);
@@ -45,7 +53,7 @@ class _PostContainerState extends State<PostContainer>
               child: CachedNetworkImage(
                 filterQuality: FilterQuality.medium,
                 imageUrl: widget.post.imageUrl,
-                placeholder: (context, url) => CircularProgressIndicator(),
+                // fit: BoxFit.,
               ),
             ),
             RepaintBoundary(child: _PostStats(post: widget.post)),
