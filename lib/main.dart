@@ -3,7 +3,8 @@ import 'package:forus/views/wallet_veiws/wallet_view.dart';
 import 'package:get/get.dart';
 import 'package:flutter/services.dart';
 import 'package:forus/controllers/home_controllers/home_controllers.dart';
-import 'package:forus/views/home_views/home.dart';
+import 'package:forus/views/nav_view.dart';
+// import 'package:forus/views/home_views/home.dart';
 
 void main() {
   // debugRepaintRainbowEnabled = true;
@@ -25,11 +26,11 @@ class Application extends StatelessWidget {
       // checkerboardRasterCacheImages: true,
       title: 'Forus',
       initialRoute: '/',
-      defaultTransition: Transition.leftToRight,
+      defaultTransition: Transition.noTransition,
       getPages: [
         GetPage(
           name: '/',
-          page: () => Home(),
+          page: () => NavScreen(),
           binding: HomeViewBindings(),
         ),
         GetPage(
