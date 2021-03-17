@@ -5,8 +5,13 @@ class LeftMenueController extends GetxController {
 
   changeRout({required rout}) {
     currentRout = rout;
-    print(currentRout);
     update();
-    // Get.toNamed('/$rout');
+    if (rout.toString().toLowerCase() == 'home') {
+      Get.toNamed('/');
+    } else {
+      final routName =
+          '/${rout.replaceAll(RegExp(r"\s+"), "").toString().toLowerCase()}';
+      Get.toNamed(routName);
+    }
   }
 }

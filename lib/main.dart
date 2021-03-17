@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:forus/views/nav_view.dart';
+import 'package:forus/views/wallet_veiws/wallet_view.dart';
 import 'package:get/get.dart';
+import 'package:flutter/services.dart';
+import 'package:forus/controllers/home_controllers/home_controllers.dart';
+import 'package:forus/views/home_views/home.dart';
 
 void main() {
   // debugRepaintRainbowEnabled = true;
@@ -22,12 +24,20 @@ class Application extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       // checkerboardRasterCacheImages: true,
       title: 'Forus',
-      theme: ThemeData(
-        primarySwatch: Colors.indigo,
-        primaryColor: Colors.indigo[600],
-        accentColor: Colors.indigo[100],
-      ),
-      home: NavScreen(),
+      initialRoute: '/',
+      defaultTransition: Transition.leftToRight,
+      getPages: [
+        GetPage(
+          name: '/',
+          page: () => Home(),
+          binding: HomeViewBindings(),
+        ),
+        GetPage(
+          name: '/mywallet',
+          page: () => Wallet(),
+          binding: HomeViewBindings(),
+        ),
+      ],
     );
   }
 }

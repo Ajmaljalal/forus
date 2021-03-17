@@ -29,9 +29,9 @@ class _HomeScreenDesktopState extends State<HomeScreenDesktop>
     LeftSideMenuItem(
         text: 'Friends', icon: Icons.people_alt_rounded, onTap: () {}),
     LeftSideMenuItem(text: 'Pages', icon: Icons.pages, onTap: () {}),
-    LeftSideMenuItem(text: 'Broadcasts', icon: Icons.videocam, onTap: () {}),
+    LeftSideMenuItem(text: 'Play', icon: Icons.videocam, onTap: () {}),
     LeftSideMenuItem(text: 'Rooms', icon: Icons.group_work_sharp, onTap: () {}),
-    LeftSideMenuItem(text: 'Market', icon: Icons.shopping_cart, onTap: () {}),
+    LeftSideMenuItem(text: 'Store', icon: Icons.shopping_cart, onTap: () {}),
   ];
 
   @override

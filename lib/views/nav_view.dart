@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:forus/mock/data.dart';
 import 'package:forus/views/home_views/home.dart';
+import 'package:forus/views/wallet_veiws/wallet_view.dart';
 import 'package:forus/widgets/responsive.dart';
 import 'general_views/desktop_header/header.dart';
 import 'general_views/tab_bars/custom_tab_bar.dart';
@@ -28,7 +29,7 @@ class _NavScreenState extends State<NavScreen> {
 
   final List<Widget> _screens = const [
     Home(),
-    Scaffold(),
+    Wallet(),
     Scaffold(),
     Scaffold(),
     Scaffold(),
