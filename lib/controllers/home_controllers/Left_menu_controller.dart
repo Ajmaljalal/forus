@@ -1,11 +1,12 @@
 import 'package:get/get.dart';
 
 class LeftMenueController extends GetxController {
-  var currentRout = 'home'.obs;
+  String currentRout = 'Home';
 
   changeRout({required rout}) {
-    currentRout.value = rout;
+    currentRout = rout;
     print(currentRout);
+    update();
     // Get.toNamed('/$rout');
   }
 }

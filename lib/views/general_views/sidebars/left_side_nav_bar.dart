@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:forus/configs/color_palette.dart';
 import 'package:forus/controllers/home_controllers/Left_menu_controller.dart';
 import 'package:forus/models/ui_models.dart';
@@ -80,30 +81,50 @@ class _LeftSideBarState extends State<LeftSideBar>
     return GetBuilder<LeftMenueController>(
       init: LeftMenueController(),
       builder: (ctl) {
+        final isActive = item.text == 'Home' ||
+                item.text == 'My Wallet' ||
+                item.text == 'Play' ||
+                item.text == 'Friends'
+            ? true
+            : false;
         return Material(
           color: Colors.white,
           child: ListTile(
             onTap: () {
               ctl.changeRout(rout: item.text);
             },
-            // selectedTileColor: ColorPalette.selected.withOpacity(0.3),
-            // hoverColor: ColorPalette.hover.withOpacity(0.3),
-            selected: wall == item.text ? true : false,
+            mouseCursor: isActive
+                ? SystemMouseCursors.click
+                : SystemMouseCursors.forbidden,
+            enabled: isActive,
+            selected: ctl.currentRout == item.text ? true : false,
+            trailing: !isActive
+                ? Text(
+                    'Coming Soon...',
+                    style: TextStyle(
+                      color: ColorPalette.secondary.withOpacity(0.5),
+                    ),
+                  )
+                : const SizedBox.shrink(),
             horizontalTitleGap: 5.0,
             leading: Icon(
               item.icon,
               size: 30.0,
-              color: wall == item.text
-                  ? ColorPalette.secondary
-                  : ColorPalette.primary.withOpacity(0.5),
+              color: !isActive
+                  ? ColorPalette.primary.withOpacity(0.2)
+                  : item.text == ctl.currentRout
+                      ? ColorPalette.secondary
+                      : ColorPalette.primary,
             ),
             title: Text(
               item.text,
               overflow: TextOverflow.ellipsis,
               style: TextStyle(
-                color: wall == item.text
-                    ? ColorPalette.secondary
-                    : ColorPalette.primary.withOpacity(0.8),
+                color: !isActive
+                    ? ColorPalette.primary.withOpacity(0.3)
+                    : item.text == ctl.currentRout
+                        ? ColorPalette.secondary
+                        : ColorPalette.primary,
               ),
             ),
           ),

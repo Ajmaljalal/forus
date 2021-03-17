@@ -20,20 +20,14 @@ class CustomTabBar extends StatelessWidget {
     return TabBar(
       indicatorPadding: EdgeInsets.zero,
       indicator: BoxDecoration(
-        border: isBottomIndicator
-            ? const Border(
-                bottom: const BorderSide(
-                  color: ColorPalette.secondary,
-                  width: 3.0,
-                ),
-              )
-            : const Border(
-                top: const BorderSide(
-                  color: ColorPalette.secondary,
-                  width: 3.0,
-                ),
-              ),
-      ),
+          border: !isBottomIndicator
+              ? const Border(
+                  top: const BorderSide(
+                    color: ColorPalette.secondary,
+                    width: 3.0,
+                  ),
+                )
+              : null),
       tabs: icons
           .asMap()
           .map((i, e) => MapEntry(
