@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:forus/configs/color_palette.dart';
-import 'package:forus/controllers/home_controllers/Left_menu_controller.dart';
+import 'package:forus/controllers/home_controllers/tabbars_controller.dart';
 import 'package:forus/models/ui_models.dart';
 import 'package:get/get.dart';
 
@@ -78,27 +78,25 @@ class _LeftSideBarState extends State<LeftSideBar>
     required LeftSideMenuItem item,
     required String wall,
   }) {
-    return GetBuilder<LeftMenueController>(
-      init: LeftMenueController(),
+    return GetBuilder<TabBarsController>(
+      init: TabBarsController(),
       builder: (ctl) {
-        final isActive = item.text == 'Home' ||
-                item.text == 'My Wallet' ||
-                item.text == 'Play' ||
-                item.text == 'Friends'
-            ? true
-            : false;
+        final isDeActive =
+            item.text == 'Pages' || item.text == 'Rooms' || item.text == 'Store'
+                ? true
+                : false;
         return Material(
           color: Colors.white,
           child: ListTile(
             onTap: () {
               ctl.changeRout(rout: item.text);
             },
-            mouseCursor: isActive
+            mouseCursor: !isDeActive
                 ? SystemMouseCursors.click
                 : SystemMouseCursors.forbidden,
-            enabled: isActive,
+            enabled: !isDeActive,
             selected: ctl.currentRout == item.text ? true : false,
-            trailing: !isActive
+            trailing: isDeActive
                 ? Text(
                     'Coming Soon...',
                     style: TextStyle(
@@ -110,7 +108,7 @@ class _LeftSideBarState extends State<LeftSideBar>
             leading: Icon(
               item.icon,
               size: 30.0,
-              color: !isActive
+              color: isDeActive
                   ? ColorPalette.primary.withOpacity(0.2)
                   : item.text == ctl.currentRout
                       ? ColorPalette.secondary
@@ -120,7 +118,7 @@ class _LeftSideBarState extends State<LeftSideBar>
               item.text,
               overflow: TextOverflow.ellipsis,
               style: TextStyle(
-                color: !isActive
+                color: isDeActive
                     ? ColorPalette.primary.withOpacity(0.3)
                     : item.text == ctl.currentRout
                         ? ColorPalette.secondary

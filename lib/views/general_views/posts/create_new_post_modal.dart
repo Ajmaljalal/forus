@@ -75,6 +75,7 @@ class _CreateNewPostModalState extends State<CreateNewPostModal> {
   }
 
   Widget _buildActionButtons() {
+    Get.put(MainFeedController());
     final MainFeedController mainFeedCtl = Get.find();
     final CreateNewPostController createPostCtl = Get.find();
     return Container(

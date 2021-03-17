@@ -10,16 +10,16 @@ import 'package:forus/views/general_views/sidebars/left_side_nav_bar.dart';
 import 'package:forus/views/home_views/online_friends_list.dart';
 import 'package:get/get.dart';
 
-class HomeScreenDesktop extends StatefulWidget {
-  const HomeScreenDesktop({
+class HomeScreenWeb extends StatefulWidget {
+  const HomeScreenWeb({
     Key? key,
   }) : super(key: key);
 
   @override
-  _HomeScreenDesktopState createState() => _HomeScreenDesktopState();
+  _HomeScreenWebState createState() => _HomeScreenWebState();
 }
 
-class _HomeScreenDesktopState extends State<HomeScreenDesktop>
+class _HomeScreenWebState extends State<HomeScreenWeb>
     with AutomaticKeepAliveClientMixin {
   final String wall = 'Home';
 
