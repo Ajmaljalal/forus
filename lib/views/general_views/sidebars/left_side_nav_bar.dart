@@ -6,13 +6,11 @@ import 'package:forus/models/ui_models.dart';
 import 'package:get/get.dart';
 
 class LeftSideBar extends StatefulWidget {
-  final String currentWall;
   final List<LeftSideMenuItem> items;
 
   LeftSideBar({
     Key? key,
     required this.items,
-    required this.currentWall,
   }) : super(key: key);
 
   @override
@@ -67,17 +65,13 @@ class _LeftSideBarState extends State<LeftSideBar>
     return widget.items
         .asMap()
         .map(
-          (index, item) => MapEntry(
-              index, _buildNavItem(item: item, wall: widget.currentWall)),
+          (index, item) => MapEntry(index, _buildNavItem(item: item)),
         )
         .values
         .toList();
   }
 
-  Widget _buildNavItem({
-    required LeftSideMenuItem item,
-    required String wall,
-  }) {
+  Widget _buildNavItem({required LeftSideMenuItem item}) {
     return GetBuilder<TabBarsController>(
       init: TabBarsController(),
       builder: (ctl) {

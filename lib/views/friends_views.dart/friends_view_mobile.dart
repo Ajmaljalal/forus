@@ -6,28 +6,28 @@ import 'package:forus/views/general_views/posts/post_container.dart';
 import 'package:forus/configs/color_palette.dart';
 import 'package:forus/widgets/circled_button.dart';
 
-class WalletScreenMobile extends StatefulWidget {
-  const WalletScreenMobile({
+class FriendsScreenMobile extends StatefulWidget {
+  const FriendsScreenMobile({
     Key? key,
   }) : super(key: key);
 
   @override
-  _WalletScreenMobileState createState() => _WalletScreenMobileState();
+  _FriendsScreenMobileState createState() => _FriendsScreenMobileState();
 }
 
-class _WalletScreenMobileState extends State<WalletScreenMobile>
+class _FriendsScreenMobileState extends State<FriendsScreenMobile>
     with AutomaticKeepAliveClientMixin {
   @override
   Widget build(BuildContext context) {
     super.build(context);
-    print('mobile home');
+    print('mobile friends');
     return CustomScrollView(
       slivers: [
         SliverAppBar(
           brightness: Brightness.light,
           backgroundColor: Colors.white,
           title: const Text(
-            'Wallet',
+            'friends',
             style: const TextStyle(
               color: ColorPalette.primary,
               fontSize: 28.0,
@@ -54,6 +54,15 @@ class _WalletScreenMobileState extends State<WalletScreenMobile>
         SliverToBoxAdapter(
           child: Center(child: Text('Friends')),
         ),
+        // SliverList(
+        //   delegate: SliverChildBuilderDelegate(
+        //     (context, index) {
+        //       final Post post = posts[index];
+        //       return PostContainer(post: post);
+        //     },
+        //     childCount: posts.length,
+        //   ),
+        // ),
       ],
     );
   }

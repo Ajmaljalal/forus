@@ -10,26 +10,22 @@ import 'package:forus/views/general_views/sidebars/left_side_nav_bar.dart';
 import 'package:forus/views/home_views/online_friends_list.dart';
 import 'package:get/get.dart';
 
-class HomeScreenWeb extends StatefulWidget {
-  const HomeScreenWeb({
+class FriendsScreenWeb extends StatefulWidget {
+  const FriendsScreenWeb({
     Key? key,
   }) : super(key: key);
 
   @override
-  _HomeScreenWebState createState() => _HomeScreenWebState();
+  _FriendsScreenWebState createState() => _FriendsScreenWebState();
 }
 
-class _HomeScreenWebState extends State<HomeScreenWeb>
+class _FriendsScreenWebState extends State<FriendsScreenWeb>
     with AutomaticKeepAliveClientMixin {
   final _items = [
     LeftSideMenuItem(text: 'Home', icon: Icons.home, onTap: () {}),
     LeftSideMenuItem(text: 'My Wallet', icon: Icons.attach_money, onTap: () {}),
     LeftSideMenuItem(
         text: 'Friends', icon: Icons.people_alt_rounded, onTap: () {}),
-    LeftSideMenuItem(text: 'Pages', icon: Icons.pages, onTap: () {}),
-    LeftSideMenuItem(text: 'Play', icon: Icons.videocam, onTap: () {}),
-    LeftSideMenuItem(text: 'Rooms', icon: Icons.group_work_sharp, onTap: () {}),
-    LeftSideMenuItem(text: 'Store', icon: Icons.shopping_cart, onTap: () {}),
   ];
 
   @override
@@ -43,7 +39,7 @@ class _HomeScreenWebState extends State<HomeScreenWeb>
   @override
   Widget build(BuildContext context) {
     super.build(context);
-    print('home desktop build');
+    print('friends web build');
     return Row(
       children: [
         _buildLeft(),
@@ -78,24 +74,24 @@ class _HomeScreenWebState extends State<HomeScreenWeb>
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              CreatePostContainer(currentUser: currentUser),
               Expanded(
-                child: Container(
-                  margin: const EdgeInsets.only(top: 10.0),
-                  child: GetBuilder<MainFeedController>(
-                    init: MainFeedController(),
-                    builder: (ctrl) {
-                      return ListView.builder(
-                        cacheExtent: MediaQuery.of(context).size.height,
-                        itemCount: ctrl.newsFeedPosts.length,
-                        itemBuilder: (context, index) {
-                          final Post post = ctrl.newsFeedPosts[index];
-                          return PostContainer(post: post);
-                        },
-                      );
-                    },
-                  ),
-                ),
+                child: Center(child: Text('Friends')),
+                // child: Container(
+                //   margin: const EdgeInsets.only(top: 10.0),
+                //   child: GetBuilder<MainFeedController>(
+                //     init: MainFeedController(),
+                //     builder: (ctrl) {
+                //       return ListView.builder(
+                //         cacheExtent: MediaQuery.of(context).size.height,
+                //         itemCount: ctrl.newsFeedPosts.length,
+                //         itemBuilder: (context, index) {
+                //           final Post post = ctrl.newsFeedPosts[index];
+                //           return PostContainer(post: post);
+                //         },
+                //       );
+                //     },
+                //   ),
+                // ),
               ),
             ],
           ),

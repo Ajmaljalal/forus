@@ -13,8 +13,6 @@ class WalletScreenWeb extends StatefulWidget {
 
 class _WalletScreenWebState extends State<WalletScreenWeb>
     with AutomaticKeepAliveClientMixin {
-  final String wall = 'Home';
-
   final _items = [
     LeftSideMenuItem(
       text: 'Home',
@@ -60,7 +58,6 @@ class _WalletScreenWebState extends State<WalletScreenWeb>
         alignment: Alignment.centerLeft,
         child: LeftSideBar(
           items: _items,
-          currentWall: wall,
         ),
       ),
     );

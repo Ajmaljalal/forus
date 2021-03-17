@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:forus/views/friends_views.dart/friends_view_web.dart';
 import 'package:forus/views/home_views/home_view_web.dart';
 import 'package:forus/views/wallet_veiws/wallet_view_web.dart';
 import 'package:get/get.dart';
@@ -30,6 +31,7 @@ class _NavScreenWebState extends State<NavScreenWeb> {
   final Map<String, Widget> _screens = const {
     '/home': HomeScreenWeb(),
     '/mywallet': WalletScreenWeb(),
+    '/friends': FriendsScreenWeb(),
   };
 
   final List<IconData> _desktopIcons = const [

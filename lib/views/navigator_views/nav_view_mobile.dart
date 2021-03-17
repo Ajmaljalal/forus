@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:forus/mock/data.dart';
+import 'package:forus/views/friends_views.dart/friends_view_mobile.dart';
 import 'package:forus/views/home_views/home_view_mobile.dart';
 import 'package:forus/views/wallet_veiws/wallet_view_mobile.dart';
-import 'package:forus/widgets/responsive.dart';
-import '../general_views/desktop_header/header.dart';
 import '../general_views/tab_bars/custom_tab_bar.dart';
 
 class NavScreenMobile extends StatefulWidget {
@@ -30,7 +28,7 @@ class _NavScreenMobileState extends State<NavScreenMobile> {
   final List<Widget> _screens = const [
     HomeScreenMobile(),
     WalletScreenMobile(),
-    Scaffold(),
+    FriendsScreenMobile(),
     Scaffold(),
     Scaffold(),
     Scaffold(),
@@ -44,29 +42,11 @@ class _NavScreenMobileState extends State<NavScreenMobile> {
     Icons.menu,
   ];
 
-  final List<IconData> _desktopIcons = const [
-    Icons.home,
-    Icons.settings,
-    Icons.search_rounded
-  ];
-
   @override
   Widget build(BuildContext context) {
-    final Size _screenSize = MediaQuery.of(context).size;
     return DefaultTabController(
       length: _mobileIcons.length,
       child: Scaffold(
-          appBar: Responsive.isDesktop(context)
-              ? PreferredSize(
-                  preferredSize: Size(_screenSize.width, 100.0),
-                  child: Header(
-                    currentUser: currentUser,
-                    icons: _desktopIcons,
-                    selectedIndex: _selectedIndex,
-                    onTap: (index) => setState(() => _selectedIndex = index),
-                  ),
-                )
-              : null,
           body: PageView(
             controller: _pageController,
             onPageChanged: _onPageChange,
