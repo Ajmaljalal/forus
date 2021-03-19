@@ -2,7 +2,7 @@ import 'package:get/get.dart';
 
 class LeftSideBarController extends GetxController {
   String currentRout = 'Home';
-  String innerRout = 'null';
+  String innerRout = '';
 
   changeRout({required rout}) {
     currentRout = rout;

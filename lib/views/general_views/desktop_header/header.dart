@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:forus/configs/color_palette.dart';
+import 'package:forus/controllers/tabbars_controllers/left_side_bar_controller.dart';
 import 'package:forus/models/models.dart';
 import 'package:forus/views/general_views/tab_bars/custom_tab_bar.dart';
 import 'package:forus/widgets/circled_button.dart';
 import 'package:forus/widgets/user_card.dart';
+import 'package:get/get.dart';
 
 class Header extends StatelessWidget {
   final User currentUser;
@@ -37,12 +39,18 @@ class Header extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Expanded(
-            child: const Text(
-              'forus',
-              style: const TextStyle(
-                color: ColorPalette.primary,
-                fontSize: 32.0,
-                fontWeight: FontWeight.bold,
+            child: InkWell(
+              onTap: () {
+                final LeftSideBarController ctl = Get.find();
+                ctl.changeRout(rout: 'Home');
+              },
+              child: const Text(
+                'nagash',
+                style: const TextStyle(
+                  color: ColorPalette.primary,
+                  fontSize: 32.0,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ),
           ),

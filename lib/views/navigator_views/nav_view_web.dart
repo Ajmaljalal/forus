@@ -3,7 +3,7 @@ import 'package:forus/views/friends_views.dart/friends_view_web.dart';
 import 'package:forus/views/home_views/home_view_web.dart';
 import 'package:forus/views/wallet_veiws/wallet_view_web.dart';
 import 'package:get/get.dart';
-import 'package:forus/controllers/home_controllers/tabbars_controller.dart';
+import 'package:forus/controllers/tabbars_controllers/left_side_bar_controller.dart';
 import 'package:forus/mock/data.dart';
 import '../general_views/desktop_header/header.dart';
 
@@ -43,8 +43,8 @@ class _NavScreenWebState extends State<NavScreenWeb> {
   @override
   Widget build(BuildContext context) {
     final Size _screenSize = MediaQuery.of(context).size;
-    return GetBuilder<TabBarsController>(
-      init: TabBarsController(),
+    return GetBuilder<LeftSideBarController>(
+      init: LeftSideBarController(),
       builder: (ctl) {
         return DefaultTabController(
           length: _desktopIcons.length,

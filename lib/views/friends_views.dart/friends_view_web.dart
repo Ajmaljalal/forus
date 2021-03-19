@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:forus/controllers/home_controllers/main_feed_controller.dart';
-import 'package:forus/models/models.dart';
 import 'package:forus/models/ui_models.dart';
 import 'package:forus/mock/data.dart';
-import 'package:forus/views/general_views/posts/create_new_post.dart';
-import 'package:forus/views/general_views/posts/post_container.dart';
 import 'package:forus/views/general_views/sidebars/left_side_nav_bar.dart';
 import 'package:forus/views/home_views/online_friends_list.dart';
 import 'package:get/get.dart';
@@ -21,11 +18,10 @@ class FriendsScreenWeb extends StatefulWidget {
 
 class _FriendsScreenWebState extends State<FriendsScreenWeb>
     with AutomaticKeepAliveClientMixin {
-  final _items = [
-    LeftSideMenuItem(text: 'Home', icon: Icons.home, onTap: () {}),
-    LeftSideMenuItem(text: 'My Wallet', icon: Icons.attach_money, onTap: () {}),
-    LeftSideMenuItem(
-        text: 'Friends', icon: Icons.people_alt_rounded, onTap: () {}),
+  final _items = const [
+    LeftSideMenuItem(text: 'Home', icon: Icons.home),
+    LeftSideMenuItem(text: 'My Wallet', icon: Icons.attach_money),
+    LeftSideMenuItem(text: 'Friends', icon: Icons.people_alt_rounded),
   ];
 
   @override
@@ -58,6 +54,7 @@ class _FriendsScreenWebState extends State<FriendsScreenWeb>
         alignment: Alignment.centerLeft,
         child: LeftSideBar(
           items: _items,
+          innerRout: true,
         ),
       ),
     );
