@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:forus/controllers/tabbars_controllers/left_side_bar_controller.dart';
 import 'package:forus/models/ui_models.dart';
 import 'package:forus/views/general_views/sidebars/left_side_nav_bar.dart';
+import 'package:get/get.dart';
 
 class WalletScreenWeb extends StatefulWidget {
   const WalletScreenWeb({
@@ -13,21 +15,15 @@ class WalletScreenWeb extends StatefulWidget {
 
 class _WalletScreenWebState extends State<WalletScreenWeb>
     with AutomaticKeepAliveClientMixin {
-  final _items = [
-    LeftSideMenuItem(
-      text: 'Home',
-      icon: Icons.home,
-      onTap: () {},
-    ),
+  final _menuItems = const [
     LeftSideMenuItem(
       text: 'My Earnings',
       icon: Icons.attach_money,
-      onTap: () {},
+
     ),
     LeftSideMenuItem(
       text: 'Tips',
       icon: Icons.money_rounded,
-      onTap: () {},
     ),
   ];
 
@@ -57,7 +53,8 @@ class _WalletScreenWebState extends State<WalletScreenWeb>
       child: Align(
         alignment: Alignment.centerLeft,
         child: LeftSideBar(
-          items: _items,
+          items: _menuItems,
+          innerRout: true,
         ),
       ),
     );
@@ -71,11 +68,16 @@ class _WalletScreenWebState extends State<WalletScreenWeb>
         child: Container(
           margin: const EdgeInsets.only(top: 8.0),
           width: 700.0,
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Text('My wallet'),
-            ],
+          child: GetBuilder<LeftSideBarController>(
+            init: LeftSideBarController(),
+            builder: (ctl) {
+              return Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text(ctl.innerRout),
+                ],
+              );
+            },
           ),
         ),
       ),

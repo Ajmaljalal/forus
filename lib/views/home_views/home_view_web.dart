@@ -21,15 +21,14 @@ class HomeScreenWeb extends StatefulWidget {
 
 class _HomeScreenWebState extends State<HomeScreenWeb>
     with AutomaticKeepAliveClientMixin {
-  final _items = [
-    LeftSideMenuItem(text: 'Home', icon: Icons.home, onTap: () {}),
-    LeftSideMenuItem(text: 'My Wallet', icon: Icons.attach_money, onTap: () {}),
-    LeftSideMenuItem(
-        text: 'Friends', icon: Icons.people_alt_rounded, onTap: () {}),
-    LeftSideMenuItem(text: 'Pages', icon: Icons.pages, onTap: () {}),
-    LeftSideMenuItem(text: 'Play', icon: Icons.videocam, onTap: () {}),
-    LeftSideMenuItem(text: 'Rooms', icon: Icons.group_work_sharp, onTap: () {}),
-    LeftSideMenuItem(text: 'Store', icon: Icons.shopping_cart, onTap: () {}),
+  final _items = const [
+    LeftSideMenuItem(text: 'Home', icon: Icons.home),
+    LeftSideMenuItem(text: 'My Wallet', icon: Icons.attach_money),
+    LeftSideMenuItem(text: 'Friends', icon: Icons.people_alt_rounded),
+    LeftSideMenuItem(text: 'Pages', icon: Icons.pages),
+    LeftSideMenuItem(text: 'Play', icon: Icons.videocam),
+    LeftSideMenuItem(text: 'Rooms', icon: Icons.group_work_sharp),
+    LeftSideMenuItem(text: 'Store', icon: Icons.shopping_cart),
   ];
 
   @override
@@ -62,6 +61,7 @@ class _HomeScreenWebState extends State<HomeScreenWeb>
         alignment: Alignment.centerLeft,
         child: LeftSideBar(
           items: _items,
+          innerRout: false,
         ),
       ),
     );

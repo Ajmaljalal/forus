@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:forus/configs/color_palette.dart';
-import 'package:forus/controllers/home_controllers/tabbars_controller.dart';
+import 'package:forus/controllers/tabbars_controllers/left_side_bar_controller.dart';
 import 'package:forus/models/ui_models.dart';
 import 'package:get/get.dart';
 
 class LeftSideBar extends StatefulWidget {
   final List<LeftSideMenuItem> items;
+  final bool innerRout;
 
-  LeftSideBar({
-    Key? key,
-    required this.items,
-  }) : super(key: key);
+  LeftSideBar({Key? key, required this.items, required this.innerRout})
+      : super(key: key);
 
   @override
   _LeftSideBarState createState() => _LeftSideBarState();
@@ -72,8 +71,8 @@ class _LeftSideBarState extends State<LeftSideBar>
   }
 
   Widget _buildNavItem({required LeftSideMenuItem item}) {
-    return GetBuilder<TabBarsController>(
-      init: TabBarsController(),
+    return GetBuilder<LeftSideBarController>(
+      init: LeftSideBarController(),
       builder: (ctl) {
         final isDeActive =
             item.text == 'Pages' || item.text == 'Rooms' || item.text == 'Store'
@@ -83,7 +82,9 @@ class _LeftSideBarState extends State<LeftSideBar>
           color: Colors.white,
           child: ListTile(
             onTap: () {
-              ctl.changeRout(rout: item.text);
+              widget.innerRout == true
+                  ? ctl.changeInnerRout(rout: item.text)
+                  : ctl.changeRout(rout: item.text);
             },
             mouseCursor: !isDeActive
                 ? SystemMouseCursors.click

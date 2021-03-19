@@ -1,7 +1,8 @@
 import 'package:get/get.dart';
 
-class TabBarsController extends GetxController {
+class LeftSideBarController extends GetxController {
   String currentRout = 'Home';
+  String innerRout = '';
 
   changeRout({required rout}) {
     currentRout = rout;
@@ -13,5 +14,10 @@ class TabBarsController extends GetxController {
     //       '/${rout.replaceAll(RegExp(r"\s+"), "").toString().toLowerCase()}';
     //   Get.toNamed(routName);
     // }
+  }
+
+  changeInnerRout({required rout}) {
+    innerRout = rout;
+    update();
   }
 }
