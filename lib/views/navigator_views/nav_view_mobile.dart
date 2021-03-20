@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:forus/views/friends_views.dart/friends_view_mobile.dart';
 import 'package:forus/views/home_views/home_view_mobile.dart';
+import 'package:forus/views/shared_views/tab_bars/custom_tab_bar.dart';
 import 'package:forus/views/wallet_veiws/wallet_view_mobile.dart';
-import '../general_views/tab_bars/custom_tab_bar.dart';
 
 class NavScreenMobile extends StatefulWidget {
   @override

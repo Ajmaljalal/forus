@@ -102,7 +102,7 @@ class _LeftSideBarState extends State<LeftSideBar>
             horizontalTitleGap: 5.0,
             leading: Icon(
               item.icon,
-              size: 30.0,
+              size: 25.0,
               color: isDeActive
                   ? ColorPalette.primary.withOpacity(0.2)
                   : item.text == ctl.currentRout
