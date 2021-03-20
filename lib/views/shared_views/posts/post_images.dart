@@ -15,6 +15,18 @@ class PostImages extends StatefulWidget {
 
 class PostImagesState extends State<PostImages> {
   int _currentIndex = 0;
+  List _imagesList = const [];
+
+  @override
+  void initState() {
+    super.initState();
+    final imagesList = widget.images.map((image) {
+      return _buildImageContainer(image: image);
+    }).toList();
+    setState(() {
+      _imagesList = imagesList;
+    });
+  }
 
   void _onImageChange(bool goBack) {
     if (_currentIndex == 0 && goBack) {
@@ -42,13 +54,16 @@ class PostImagesState extends State<PostImages> {
     final _isMulti = widget.images.length > 1 ? true : false;
     return Stack(
       children: [
-        IndexedStack(
-          sizing: StackFit.loose,
-          index: _currentIndex,
-          children: widget.images.map((image) {
-            return _buildImageContainer(image: image);
-          }).toList(),
-        ),
+        // IndexedStack(
+        //   sizing: StackFit.loose,
+        //   index: _currentIndex,
+        //   children: widget.images.map((image) {
+        //     return _buildImageContainer(image: image);
+        //   }).toList(),
+        // ),
+        _imagesList.length > 0
+            ? _imagesList[_currentIndex]
+            : const SizedBox.shrink(),
         _isMulti && _currentIndex != 0
             ? _buildArrowButton(goBack: true)
             : const SizedBox.shrink(),
