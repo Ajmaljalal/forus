@@ -120,7 +120,7 @@ class _CreateNewPostModalState extends State<CreateNewPostModal> {
                       text: _postInputController.text,
                       likes: 0,
                       comments: 0,
-                      imageUrl: 'https://picsum.photos/id/7/680/400',
+                      imageUrl: ['https://picsum.photos/id/7/680/400'],
                       shares: 0,
                       user: User(
                         imageUrl: 'https://picsum.photos/id/7/80',

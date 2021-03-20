@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:forus/controllers/tabbars_controllers/left_side_bar_controller.dart';
 import 'package:forus/models/ui_models.dart';
-import 'package:forus/views/general_views/sidebars/left_side_nav_bar.dart';
+import 'package:forus/views/shared_views/sidebars/left_side_nav_bar.dart';
 import 'package:get/get.dart';
 
 class WalletScreenWeb extends StatefulWidget {
@@ -19,7 +19,6 @@ class _WalletScreenWebState extends State<WalletScreenWeb>
     LeftSideMenuItem(
       text: 'My Earnings',
       icon: Icons.attach_money,
-
     ),
     LeftSideMenuItem(
       text: 'Tips',

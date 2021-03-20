@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:forus/views/friends_views.dart/friends_view_web.dart';
 import 'package:forus/views/home_views/home_view_web.dart';
+import 'package:forus/views/shared_views/web_header/header.dart';
 import 'package:forus/views/wallet_veiws/wallet_view_web.dart';
 import 'package:get/get.dart';
 import 'package:forus/controllers/tabbars_controllers/left_side_bar_controller.dart';
 import 'package:forus/mock/data.dart';
-import '../general_views/desktop_header/header.dart';
 
 class NavScreenWeb extends StatefulWidget {
   @override
