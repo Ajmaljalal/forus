@@ -5,7 +5,7 @@ import 'package:forus/models/models.dart';
 import 'package:forus/models/ui_models.dart';
 import 'package:forus/mock/data.dart';
 import 'package:forus/views/home_views/online_friends_list.dart';
-import 'package:forus/views/shared_views/posts/create_new_post.dart';
+import 'package:forus/views/shared_views/posts/speak_out_load_container.dart';
 import 'package:forus/views/shared_views/posts/post_container.dart';
 import 'package:forus/views/shared_views/sidebars/left_side_nav_bar.dart';
 import 'package:get/get.dart';
