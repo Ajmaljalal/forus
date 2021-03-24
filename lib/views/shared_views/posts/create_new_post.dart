@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:forus/controllers/home_controllers/bottom_nav_controller.dart';
 import 'package:forus/widgets/responsive.dart';
 import 'package:get/get.dart';
 import 'package:file_picker/file_picker.dart';
@@ -18,10 +19,12 @@ class CreateNewPostModal extends StatefulWidget {
 
 class _CreateNewPostModalState extends State<CreateNewPostModal> {
   final TextEditingController _postInputController = TextEditingController();
+  final FocusNode _postInputFocusNode = FocusNode();
 
   @override
   void dispose() {
     _postInputController.dispose();
+    _postInputFocusNode.dispose();
     super.dispose();
   }
 
@@ -62,6 +65,7 @@ class _CreateNewPostModalState extends State<CreateNewPostModal> {
               minLines: null,
               expands: true,
               autofocus: true,
+              focusNode: _postInputFocusNode,
               decoration: const InputDecoration(
                 hintText: 'Speak out your mind!',
                 border: InputBorder.none,
@@ -80,6 +84,7 @@ class _CreateNewPostModalState extends State<CreateNewPostModal> {
   Widget _buildActionButtons() {
     Get.put(MainFeedController());
     final MainFeedController mainFeedCtl = Get.find();
+    final BottomNavController bottomNavCtl = Get.find();
     final CreateNewPostController createPostCtl = Get.find();
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 8.0, vertical: 3.0),
@@ -111,7 +116,9 @@ class _CreateNewPostModalState extends State<CreateNewPostModal> {
                 text: 'Cancel',
                 color: ColorPalette.secondary,
                 onTap: () {
-                  Get.back();
+                  bottomNavCtl.changeSelectedIndex(index: 0);
+                  _postInputFocusNode.unfocus();
+                  _postInputController.clear();
                 },
               ),
               _createAttachmentButton(
@@ -131,6 +138,9 @@ class _CreateNewPostModalState extends State<CreateNewPostModal> {
                       ),
                     ),
                   );
+                  bottomNavCtl.changeSelectedIndex(index: 0);
+                  _postInputFocusNode.unfocus();
+                  _postInputController.clear();
                 },
               ),
             ],

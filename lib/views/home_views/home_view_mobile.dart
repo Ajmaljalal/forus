@@ -27,10 +27,10 @@ class _HomeScreenMobileState extends State<HomeScreenMobile>
           brightness: Brightness.light,
           backgroundColor: Colors.white,
           title: const Text(
-            'forus',
+            'batwa',
             style: const TextStyle(
               color: ColorPalette.primary,
-              fontSize: 28.0,
+              fontSize: 25.0,
               fontWeight: FontWeight.bold,
               letterSpacing: -1.2,
             ),
@@ -45,6 +45,11 @@ class _HomeScreenMobileState extends State<HomeScreenMobile>
             ),
             CircleButton(
               icon: Icons.notifications,
+              iconSize: 20.0,
+              onPressed: () => print('Messenger'),
+            ),
+            CircleButton(
+              icon: Icons.filter_alt_rounded,
               iconSize: 20.0,
               onPressed: () => print('Messenger'),
             ),

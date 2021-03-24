@@ -16,6 +16,6 @@ class MainFeedController extends GetxController {
     newsFeedPosts.add(post);
     print(newsFeedPosts);
     update();
-    Get.back();
+    
   }
 }

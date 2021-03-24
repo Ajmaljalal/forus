@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:forus/views/shared_views/posts/create_new_post_mobile.dart';
+import 'package:forus/controllers/home_controllers/bottom_nav_controller.dart';
 import 'package:get/get.dart';
 import 'package:forus/configs/color_palette.dart';
 import 'package:forus/models/models.dart';
@@ -17,6 +17,7 @@ class CreatePostContainer extends StatelessWidget {
   }) : super(key: key);
 
   openCreateNewPostModal(context) {
+    final BottomNavController ctl = Get.find();
     if (Responsive.isDesktop(context)) {
       Get.defaultDialog(
         title: 'Speak Out',
@@ -24,7 +25,7 @@ class CreatePostContainer extends StatelessWidget {
         content: CreateNewPostModal(),
       );
     } else {
-      Get.to(CreateNewPostMobile());
+      ctl.changeSelectedIndex(index: 2);
     }
   }
 
