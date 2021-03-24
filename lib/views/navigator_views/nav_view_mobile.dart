@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:forus/controllers/home_controllers/bottom_nav_controller.dart';
 import 'package:forus/views/home_views/home_view_mobile.dart';
 import 'package:forus/views/shared_views/posts/create_new_post_mobile.dart';
 import 'package:forus/views/shared_views/tab_bars/custom_tab_bar.dart';
 import 'package:forus/views/wallet_veiws/wallet_view_mobile.dart';
+import 'package:get/get.dart';
 
 class NavScreenMobile extends StatefulWidget {
   @override
@@ -10,20 +12,11 @@ class NavScreenMobile extends StatefulWidget {
 }
 
 class _NavScreenMobileState extends State<NavScreenMobile> {
-  PageController _pageController = PageController();
-  int _selectedIndex = 0;
-
-  @override
-  void dispose() {
-    _pageController.dispose();
-    super.dispose();
-  }
-
-  void _onPageChange(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
+  // @override
+  // void dispose() {
+  //   _pageController.dispose();
+  //   super.dispose();
+  // }
 
   final List<Widget> _screens = const [
     HomeScreenMobile(),
@@ -45,25 +38,29 @@ class _NavScreenMobileState extends State<NavScreenMobile> {
   Widget build(BuildContext context) {
     return DefaultTabController(
       length: _mobileIcons.length,
-      child: Scaffold(
-        body: PageView(
-          controller: _pageController,
-          onPageChanged: _onPageChange,
-          physics: const NeverScrollableScrollPhysics(),
-          children: _screens,
-        ),
-        bottomNavigationBar: _selectedIndex != 2
-            ? Container(
-                color: Colors.white,
-                child: CustomTabBar(
-                  icons: _mobileIcons,
-                  selectedIndex: _selectedIndex,
-                  onTap: (index) => _pageController.jumpToPage(
-                    index,
-                  ),
-                ),
-              )
-            : null,
+      child: GetBuilder<BottomNavController>(
+        init: BottomNavController(),
+        builder: (ctl) {
+          return Scaffold(
+            body: PageView(
+              controller: ctl.pageController,
+              physics: const NeverScrollableScrollPhysics(),
+              children: _screens,
+            ),
+            bottomNavigationBar: ctl.selectedIndex != 2
+                ? Container(
+                    color: Colors.white,
+                    child: CustomTabBar(
+                      icons: _mobileIcons,
+                      selectedIndex: ctl.selectedIndex,
+                      onTap: (index) {
+                        ctl.changeSelectedIndex(index: index);
+                      },
+                    ),
+                  )
+                : null,
+          );
+        },
       ),
     );
   }
