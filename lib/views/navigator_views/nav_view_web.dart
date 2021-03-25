@@ -19,7 +19,6 @@ class _NavScreenWebState extends State<NavScreenWeb> {
   @override
   void initState() {
     super.initState();
-    // Get.put(LeftMenueController());
   }
 
   @override

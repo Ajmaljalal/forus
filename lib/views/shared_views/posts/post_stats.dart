@@ -14,7 +14,7 @@ class PostStats extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 45.0,
+      height: 48.0,
       child: RepaintBoundary(
         child: Column(
           children: [
@@ -38,7 +38,7 @@ class PostStats extends StatelessWidget {
                   ),
                 ],
               ),
-            )
+            ),
           ],
         ),
       ),

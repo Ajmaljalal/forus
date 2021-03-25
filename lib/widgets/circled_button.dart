@@ -17,26 +17,28 @@ class CircleButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.all(1.0),
+      constraints: const BoxConstraints(
+        maxHeight: 40.0,
+        maxWidth: 40.0,
+      ),
+      margin: const EdgeInsets.all(1.5),
       decoration: BoxDecoration(
         color: Colors.grey[200],
         shape: BoxShape.circle,
       ),
-      child: IconButton(
-        constraints: const BoxConstraints(
-          maxHeight: 35.0,
-          maxWidth: 35.0,
-        ),
-        icon: Center(
-          child: Icon(
-            icon,
-            color: color,
+      child: Center(
+        child: IconButton(
+          icon: Center(
+            child: Icon(
+              icon,
+              color: color,
+            ),
           ),
+          iconSize: iconSize,
+          color: Colors.black,
+          onPressed: onPressed,
+          splashRadius: 20.0,
         ),
-        iconSize: iconSize,
-        color: Colors.black,
-        onPressed: onPressed,
-        splashRadius: 20.0,
       ),
     );
   }

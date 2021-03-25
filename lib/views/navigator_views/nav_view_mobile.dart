@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:forus/controllers/home_controllers/bottom_nav_controller.dart';
 import 'package:forus/views/home_views/home_view_mobile.dart';
-import 'package:forus/views/shared_views/posts/create_new_post_mobile.dart';
 import 'package:forus/views/shared_views/tab_bars/custom_tab_bar.dart';
 import 'package:forus/views/wallet_veiws/wallet_view_mobile.dart';
 import 'package:get/get.dart';
@@ -21,7 +20,7 @@ class _NavScreenMobileState extends State<NavScreenMobile> {
   final List<Widget> _screens = const [
     HomeScreenMobile(),
     WalletScreenMobile(),
-    CreateNewPostMobile(),
+    Scaffold(),
     Scaffold(),
     Scaffold(),
     Scaffold(),
@@ -29,8 +28,8 @@ class _NavScreenMobileState extends State<NavScreenMobile> {
   final List<IconData> _mobileIcons = const [
     Icons.home,
     Icons.play_circle_fill,
-    Icons.add_circle,
     Icons.photo_library,
+    Icons.notifications,
     Icons.more_horiz_rounded,
   ];
 
@@ -47,18 +46,16 @@ class _NavScreenMobileState extends State<NavScreenMobile> {
               physics: const NeverScrollableScrollPhysics(),
               children: _screens,
             ),
-            bottomNavigationBar: ctl.selectedIndex != 2
-                ? Container(
-                    color: Colors.white,
-                    child: CustomTabBar(
-                      icons: _mobileIcons,
-                      selectedIndex: ctl.selectedIndex,
-                      onTap: (index) {
-                        ctl.changeSelectedIndex(index: index);
-                      },
-                    ),
-                  )
-                : null,
+            bottomNavigationBar: Container(
+              color: Colors.white,
+              child: CustomTabBar(
+                icons: _mobileIcons,
+                selectedIndex: ctl.selectedIndex,
+                onTap: (index) {
+                  ctl.changeSelectedIndex(index: index);
+                },
+              ),
+            ),
           );
         },
       ),

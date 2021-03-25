@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:forus/models/models.dart';
+import 'package:get/get.dart';
 import 'package:forus/mock/data.dart';
 import 'package:forus/configs/color_palette.dart';
-import 'package:forus/views/shared_views/posts/speak_out_load_container.dart';
+import 'package:forus/views/shared_views/posts/create_new_post_mobile.dart';
 import 'package:forus/views/shared_views/posts/post_container.dart';
 import 'package:forus/widgets/circled_button.dart';
 
@@ -39,14 +40,17 @@ class _HomeScreenMobileState extends State<HomeScreenMobile>
           floating: true,
           actions: [
             CircleButton(
+              icon: Icons.add_circle_outline_rounded,
+              iconSize: 20.0,
+              onPressed: () {
+                Get.to(() => CreateNewPostMobile());
+              },
+              color: ColorPalette.secondary,
+            ),
+            CircleButton(
               icon: Icons.search,
               iconSize: 20.0,
               onPressed: () => print('Search'),
-            ),
-            CircleButton(
-              icon: Icons.notifications,
-              iconSize: 20.0,
-              onPressed: () => print('Messenger'),
             ),
             CircleButton(
               icon: Icons.filter_alt_rounded,
@@ -55,9 +59,6 @@ class _HomeScreenMobileState extends State<HomeScreenMobile>
             ),
             const SizedBox(width: 12.0),
           ],
-        ),
-        SliverToBoxAdapter(
-          child: CreatePostContainer(currentUser: currentUser),
         ),
         SliverList(
           delegate: SliverChildBuilderDelegate(

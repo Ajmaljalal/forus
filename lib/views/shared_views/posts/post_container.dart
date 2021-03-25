@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:forus/models/models.dart';
 import 'package:forus/views/shared_views/posts/post_header.dart';
-import 'package:forus/views/shared_views/posts/post_images.dart';
+import 'package:forus/views/shared_views/posts/post_images_mobile.dart';
+import 'package:forus/views/shared_views/posts/post_images_web.dart';
 import 'package:forus/views/shared_views/posts/post_stats.dart';
+import 'package:forus/widgets/responsive.dart';
 
 class PostContainer extends StatefulWidget {
   final Post post;
@@ -30,7 +32,8 @@ class _PostContainerState extends State<PostContainer>
     super.build(context);
     print('post builds');
     return Card(
-      elevation: 0.0,
+      elevation: 0.1,
+      margin: EdgeInsets.fromLTRB(0.0, 4.0, 0.0, 4.0),
       child: Container(
         padding: const EdgeInsets.symmetric(vertical: 8.0),
         child: Column(
@@ -48,7 +51,9 @@ class _PostContainerState extends State<PostContainer>
                 ],
               ),
             ),
-            PostImages(images: widget.post.imageUrl),
+            Responsive.isDesktop(context)
+                ? PostImagesWeb(images: widget.post.imageUrl)
+                : PostImagesMobile(images: widget.post.imageUrl),
             PostStats(post: widget.post),
           ],
         ),

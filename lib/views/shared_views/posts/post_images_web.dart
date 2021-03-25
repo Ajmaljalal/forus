@@ -2,18 +2,18 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:forus/widgets/circled_button.dart';
 
-class PostImages extends StatefulWidget {
+class PostImagesWeb extends StatefulWidget {
   final List<String> images;
-  const PostImages({
+  const PostImagesWeb({
     Key? key,
     required this.images,
   }) : super(key: key);
 
   @override
-  PostImagesState createState() => PostImagesState();
+  PostImagesWebState createState() => PostImagesWebState();
 }
 
-class PostImagesState extends State<PostImages> {
+class PostImagesWebState extends State<PostImagesWeb> {
   int _currentIndex = 0;
   List _imagesList = const [];
 
@@ -54,13 +54,6 @@ class PostImagesState extends State<PostImages> {
     final _isMulti = widget.images.length > 1 ? true : false;
     return Stack(
       children: [
-        // IndexedStack(
-        //   sizing: StackFit.loose,
-        //   index: _currentIndex,
-        //   children: widget.images.map((image) {
-        //     return _buildImageContainer(image: image);
-        //   }).toList(),
-        // ),
         _imagesList.length > 0
             ? _imagesList[_currentIndex]
             : const SizedBox.shrink(),

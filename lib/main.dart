@@ -32,7 +32,10 @@ class Application extends StatelessWidget {
       title: 'Batwa',
       initialRoute: '/',
       defaultTransition: Transition.noTransition,
-      theme: ThemeData(fontFamily: 'Helvetica, Arial, sans-serif'),
+      theme: ThemeData(
+        scaffoldBackgroundColor: Colors.grey[200],
+        fontFamily: 'Helvetica, Arial, sans-serif',
+      ),
       home: NavScreen(),
       darkTheme: ThemeData.dark(),
       getPages: [

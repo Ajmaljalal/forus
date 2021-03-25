@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:forus/controllers/home_controllers/bottom_nav_controller.dart';
 import 'package:get/get.dart';
 import 'package:forus/configs/color_palette.dart';
 import 'package:forus/models/models.dart';
@@ -16,30 +15,25 @@ class CreatePostContainer extends StatelessWidget {
     required this.currentUser,
   }) : super(key: key);
 
-  openCreateNewPostModal(context) {
-    final BottomNavController ctl = Get.find();
-    if (Responsive.isDesktop(context)) {
-      Get.defaultDialog(
-        title: 'Speak Out',
-        radius: 5.0,
-        content: CreateNewPostModal(),
-      );
-    } else {
-      ctl.changeSelectedIndex(index: 2);
-    }
+  openCreateNewPostModal() {
+    Get.defaultDialog(
+      title: 'Speak Out',
+      radius: 5.0,
+      content: CreateNewPostModal(),
+    );
   }
 
   @override
   Widget build(BuildContext context) {
     final bool isDesktop = Responsive.isDesktop(context);
     return Card(
-      margin: EdgeInsets.symmetric(horizontal: isDesktop ? 5.0 : 0.0),
+      margin: EdgeInsets.symmetric(horizontal: 0.0, vertical: 0.0),
       elevation: isDesktop ? 1.0 : 0.0,
       child: Container(
         padding: const EdgeInsets.fromLTRB(12.0, 8.0, 12.0, 8.0),
         child: Row(
           children: [
-            _buildSpeakoutButton(context),
+            _buildSpeakoutButton(),
             _buildAttachmentButtons(),
           ],
         ),
@@ -47,13 +41,13 @@ class CreatePostContainer extends StatelessWidget {
     );
   }
 
-  _buildSpeakoutButton(context) {
+  _buildSpeakoutButton() {
     return Expanded(
       child: InkWell(
         hoverColor: Colors.transparent,
         splashColor: Colors.transparent,
         onTap: () {
-          openCreateNewPostModal(context);
+          openCreateNewPostModal();
         },
         child: Row(
           children: [
