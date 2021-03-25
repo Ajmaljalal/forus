@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:forus/controllers/home_controllers/bottom_nav_controller.dart';
 import 'package:forus/widgets/responsive.dart';
 import 'package:get/get.dart';
 import 'package:file_picker/file_picker.dart';
@@ -24,7 +23,6 @@ class _CreateNewPostModalState extends State<CreateNewPostModal> {
   @override
   void dispose() {
     _postInputController.dispose();
-    _postInputFocusNode.dispose();
     super.dispose();
   }
 
@@ -44,7 +42,7 @@ class _CreateNewPostModalState extends State<CreateNewPostModal> {
             ctl.images.length != 0
                 ? Row(children: [..._selectedPhotosVideosHolder(ctl)])
                 : const SizedBox.shrink(),
-            _buildActionButtons(),
+            _buildActionButtons(context),
           ],
         );
       },
@@ -81,10 +79,9 @@ class _CreateNewPostModalState extends State<CreateNewPostModal> {
     );
   }
 
-  Widget _buildActionButtons() {
+  Widget _buildActionButtons(context) {
     Get.put(MainFeedController());
     final MainFeedController mainFeedCtl = Get.find();
-    final BottomNavController bottomNavCtl = Get.find();
     final CreateNewPostController createPostCtl = Get.find();
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 8.0, vertical: 3.0),
@@ -112,37 +109,37 @@ class _CreateNewPostModalState extends State<CreateNewPostModal> {
           ),
           Row(
             children: [
-              _createAttachmentButton(
-                text: 'Cancel',
-                color: ColorPalette.secondary,
-                onTap: () {
-                  bottomNavCtl.changeSelectedIndex(index: 0);
-                  _postInputFocusNode.unfocus();
-                  _postInputController.clear();
-                },
-              ),
-              _createAttachmentButton(
-                text: 'Post',
-                color: ColorPalette.primary,
-                onTap: () {
-                  mainFeedCtl.createNewPost(
-                    post: Post(
-                      text: _postInputController.text,
-                      likes: 0,
-                      comments: 0,
-                      imageUrl: ['https://picsum.photos/id/7/680/400'],
-                      shares: 0,
-                      user: User(
-                        imageUrl: 'https://picsum.photos/id/7/80',
-                        name: 'Ajmal Jalal',
-                      ),
-                    ),
-                  );
-                  bottomNavCtl.changeSelectedIndex(index: 0);
-                  _postInputFocusNode.unfocus();
-                  _postInputController.clear();
-                },
-              ),
+              Responsive.isDesktop(context)
+                  ? _createAttachmentButton(
+                      text: 'Cancel',
+                      color: ColorPalette.secondary,
+                      onTap: () {
+                        Get.back();
+                      },
+                    )
+                  : const SizedBox.shrink(),
+              Responsive.isDesktop(context)
+                  ? _createAttachmentButton(
+                      text: 'Post',
+                      color: ColorPalette.primary,
+                      onTap: () {
+                        mainFeedCtl.createNewPost(
+                          post: Post(
+                            text: _postInputController.text,
+                            likes: 0,
+                            comments: 0,
+                            imageUrl: ['https://picsum.photos/id/7/680/400'],
+                            shares: 0,
+                            user: User(
+                              imageUrl: 'https://picsum.photos/id/7/80',
+                              name: 'Ajmal Jalal',
+                            ),
+                          ),
+                        );
+                        Get.back();
+                      },
+                    )
+                  : const SizedBox.shrink(),
             ],
           ),
         ],
