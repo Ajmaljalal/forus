@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:get/get.dart';
 import 'package:forus/controllers/home_controllers/main_feed_controller.dart';
 import 'package:forus/models/models.dart';
 import 'package:forus/models/ui_models.dart';
 import 'package:forus/mock/data.dart';
 import 'package:forus/views/home_views/online_friends_list.dart';
-import 'package:forus/views/shared_views/posts/speak_out_load_container.dart';
+import 'package:forus/views/shared_views/posts/create_new_post_web.dart';
 import 'package:forus/views/shared_views/posts/post_container.dart';
 import 'package:forus/views/shared_views/sidebars/left_side_nav_bar.dart';
-import 'package:get/get.dart';
 
 class HomeScreenWeb extends StatefulWidget {
   const HomeScreenWeb({
@@ -78,7 +78,7 @@ class _HomeScreenWebState extends State<HomeScreenWeb>
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              CreatePostContainer(currentUser: currentUser),
+              CreateNewPostWeb(currentUser: currentUser),
               Expanded(
                 child: Container(
                   margin: const EdgeInsets.only(top: 10.0),

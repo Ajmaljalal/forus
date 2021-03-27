@@ -1,11 +1,10 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:forus/widgets/responsive.dart';
 import 'package:get/get.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:forus/controllers/home_controllers/main_feed_controller.dart';
 import 'package:forus/controllers/posts_controllers/create_new_post_controller.dart';
-import 'package:forus/models/models.dart';
-import 'package:forus/models/post.dart';
 import 'package:forus/configs/color_palette.dart';
 import 'package:forus/widgets/circled_button.dart';
 
@@ -38,9 +37,15 @@ class _CreateNewPostModalState extends State<CreateNewPostModal> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             _buildInputField(),
-            const SizedBox(height: 10.0),
-            ctl.images.length != 0
-                ? Row(children: [..._selectedPhotosVideosHolder(ctl)])
+            const SizedBox(height: 5.0),
+            ctl.images.length > 0
+                ? Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [..._selectedPhotosHolder(ctl)],
+                  )
+                : const SizedBox.shrink(),
+            ctl.video != null
+                ? _selectedVideoHolder(ctl)
                 : const SizedBox.shrink(),
             _buildActionButtons(context),
           ],
@@ -50,29 +55,27 @@ class _CreateNewPostModalState extends State<CreateNewPostModal> {
   }
 
   Widget _buildInputField() {
-    return Center(
-      child: Material(
-        child: Container(
-          width: 500.0,
-          height: 250.0,
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: TextFormField(
-              controller: _postInputController,
-              maxLines: null,
-              minLines: null,
-              expands: true,
-              autofocus: true,
-              focusNode: _postInputFocusNode,
-              decoration: const InputDecoration(
-                hintText: 'Speak out your mind!',
-                border: InputBorder.none,
-                focusedBorder: InputBorder.none,
-                enabledBorder: InputBorder.none,
-                errorBorder: InputBorder.none,
-                disabledBorder: InputBorder.none,
-              ),
-            ),
+    return Container(
+      width: 500.0,
+      height: 210.0,
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: TextFormField(
+          controller: _postInputController,
+          maxLines: null,
+          minLines: null,
+          expands: true,
+          autofocus: true,
+          focusNode: _postInputFocusNode,
+          decoration: InputDecoration(
+            hintText: 'Speak out your mind!',
+            border: InputBorder.none,
+            focusedBorder: InputBorder.none,
+            enabledBorder: InputBorder.none,
+            errorBorder: InputBorder.none,
+            disabledBorder: InputBorder.none,
+            filled: true,
+            fillColor: Colors.grey[200],
           ),
         ),
       ),
@@ -81,8 +84,7 @@ class _CreateNewPostModalState extends State<CreateNewPostModal> {
 
   Widget _buildActionButtons(context) {
     Get.put(MainFeedController());
-    final MainFeedController mainFeedCtl = Get.find();
-    final CreateNewPostController createPostCtl = Get.find();
+    // final MainFeedController mainFeedCtl = Get.find();
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 8.0, vertical: 3.0),
       child: Row(
@@ -91,26 +93,36 @@ class _CreateNewPostModalState extends State<CreateNewPostModal> {
         children: [
           Row(
             children: [
-              _createPostButton(
+              _createAttachmentButton(
                 icon: Icons.photo_library_outlined,
-                onTap: () async {
-                  await createPostCtl.pickFiles(type: FileType.image);
-                },
+                tooltip: 'image from gallery',
+                fileType: 'image',
+                fileFrom: 'gallery',
               ),
-              _createPostButton(
+              _createAttachmentButton(
+                icon: Icons.camera_alt_outlined,
+                tooltip: 'take a picture',
+                fileType: 'image',
+                fileFrom: 'camera',
+              ),
+              _createAttachmentButton(
                 icon: Icons.play_circle_outline,
-                onTap: () {},
+                tooltip: 'video from gallery',
+                fileType: 'video',
+                fileFrom: 'gallery',
               ),
-              _createPostButton(
-                icon: Icons.emoji_emotions_outlined,
-                onTap: () {},
+              _createAttachmentButton(
+                icon: Icons.videocam_outlined,
+                tooltip: 'take a picture',
+                fileType: 'video',
+                fileFrom: 'camera',
               ),
             ],
           ),
           Row(
             children: [
               Responsive.isDesktop(context)
-                  ? _createAttachmentButton(
+                  ? _createPostButton(
                       text: 'Cancel',
                       color: ColorPalette.secondary,
                       onTap: () {
@@ -119,23 +131,11 @@ class _CreateNewPostModalState extends State<CreateNewPostModal> {
                     )
                   : const SizedBox.shrink(),
               Responsive.isDesktop(context)
-                  ? _createAttachmentButton(
+                  ? _createPostButton(
                       text: 'Post',
                       color: ColorPalette.primary,
                       onTap: () {
-                        mainFeedCtl.createNewPost(
-                          post: Post(
-                            text: _postInputController.text,
-                            likes: 0,
-                            comments: 0,
-                            imageUrl: ['https://picsum.photos/id/7/680/400'],
-                            shares: 0,
-                            user: User(
-                              imageUrl: 'https://picsum.photos/id/7/80',
-                              name: 'Ajmal Jalal',
-                            ),
-                          ),
-                        );
+                        // mainFeedCtl.createNewPost();
                         Get.back();
                       },
                     )
@@ -147,7 +147,7 @@ class _CreateNewPostModalState extends State<CreateNewPostModal> {
     );
   }
 
-  _createAttachmentButton({
+  _createPostButton({
     required String text,
     required Function()? onTap,
     required color,
@@ -162,20 +162,32 @@ class _CreateNewPostModalState extends State<CreateNewPostModal> {
     );
   }
 
-  _createPostButton({
-    required Function() onTap,
+  _createAttachmentButton({
     required IconData icon,
+    String? tooltip,
+    required String fileType,
+    required String fileFrom,
   }) {
+    final CreateNewPostController ctl = Get.find();
     return CircleButton(
       icon: icon,
       iconSize: 18.0,
       color: ColorPalette.primary,
-      onPressed: onTap,
+      tooltip: tooltip,
+      onPressed: () async {
+        kIsWeb
+            ? await ctl.pickFilesWeb(type: FileType.image)
+            : await ctl.pickFileMobile(
+                type: fileType,
+                from: fileFrom,
+              );
+      },
     );
   }
 
-  List _selectedPhotosVideosHolder(ctl) {
+  List _selectedPhotosHolder(ctl) {
     return ctl.images.map((image) {
+      print('image grabbed');
       final index = ctl.images.indexOf(image);
       if (image != null) {
         return Container(
@@ -189,13 +201,21 @@ class _CreateNewPostModalState extends State<CreateNewPostModal> {
                   vertical: 5.0,
                   horizontal: 4.0,
                 ),
-                child: Image.memory(
-                  image,
-                  height: 40.0,
-                  width: 40.0,
-                  filterQuality: FilterQuality.medium,
-                  fit: BoxFit.cover,
-                ),
+                child: kIsWeb
+                    ? Image.memory(
+                        image,
+                        height: 40.0,
+                        width: 40.0,
+                        filterQuality: FilterQuality.medium,
+                        fit: BoxFit.cover,
+                      )
+                    : Image.file(
+                        image,
+                        height: 40,
+                        width: 40,
+                        filterQuality: FilterQuality.medium,
+                        fit: BoxFit.cover,
+                      ),
               ),
               InkWell(
                 onTap: () {
@@ -213,5 +233,37 @@ class _CreateNewPostModalState extends State<CreateNewPostModal> {
       } else
         return const SizedBox.shrink();
     }).toList();
+  }
+
+  Widget _selectedVideoHolder(ctl) {
+    final video = ctl.video;
+    if (video != null) {
+      return Container(
+        margin: const EdgeInsets.only(
+          top: 5.0,
+        ),
+        child: Stack(
+          children: <Widget>[
+            Container(
+                padding: const EdgeInsets.symmetric(
+                  vertical: 5.0,
+                  horizontal: 4.0,
+                ),
+                child: Text('video selected')),
+            InkWell(
+              onTap: () {
+                // ctl.deletePickedFile(index);
+              },
+              child: const Center(
+                  child: const Icon(
+                Icons.remove_circle,
+                color: ColorPalette.secondary,
+              )),
+            )
+          ],
+        ),
+      );
+    } else
+      return const SizedBox.shrink();
   }
 }

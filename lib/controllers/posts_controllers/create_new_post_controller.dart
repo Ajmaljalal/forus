@@ -1,23 +1,57 @@
+import 'dart:io';
+
 import 'package:file_picker/file_picker.dart';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 
 class CreateNewPostController extends GetxController {
   bool createPostInProgress = true;
   List images = [];
+  var video;
 
   // createNewPost({required Post post}) async {
   //   posts.toList().add(post);
   //   createPostInProgress = false;
   // }
 
-  Future<void> pickFiles({required FileType type}) async {
-    var picked = await FilePicker.platform.pickFiles(
-      allowMultiple: true,
-      type: type,
-    );
-    if (picked != null) {
-      picked.files.map((file) => images.add(file.bytes)).toList();
-      update();
+  Future<void> pickFilesWeb({required FileType type}) async {
+    try {
+      var picked = await FilePicker.platform.pickFiles(
+        allowMultiple: true,
+        type: type,
+      );
+      if (picked != null) {
+        picked.files.map((file) => images.add(file.bytes)).toList();
+        update();
+      }
+    } catch (err) {
+      throw err;
+    }
+  }
+
+  Future pickFileMobile({
+    required String type,
+    required String from,
+  }) async {
+    final _picker = ImagePicker();
+    var _source = from == 'gallery' ? ImageSource.gallery : ImageSource.camera;
+    try {
+      final pickedFile = type == 'image'
+          ? await _picker.getImage(
+              source: _source,
+              imageQuality: 80,
+            )
+          : await _picker.getVideo(
+              source: _source,
+              preferredCameraDevice: CameraDevice.rear,
+            );
+      if (pickedFile != null) {
+        final File file = File(pickedFile.path);
+        type == 'image'? images.add(file) : video = file;
+        update();
+      }
+    } catch (error) {
+      throw (error);
     }
   }
 
