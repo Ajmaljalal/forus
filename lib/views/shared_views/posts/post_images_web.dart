@@ -51,19 +51,24 @@ class PostImagesWebState extends State<PostImagesWeb> {
 
   @override
   Widget build(BuildContext context) {
+    final _isEmpty = widget.images.length < 1 ? true : false;
     final _isMulti = widget.images.length > 1 ? true : false;
-    return Stack(
-      children: [
-        _imagesList.length > 0
-            ? _imagesList[_currentIndex]
-            : const SizedBox.shrink(),
-        _isMulti && _currentIndex != 0
-            ? _buildArrowButton(goBack: true)
-            : const SizedBox.shrink(),
-        _isMulti && _currentIndex != widget.images.length - 1
-            ? _buildArrowButton(goBack: false)
-            : const SizedBox.shrink(),
-      ],
+    if (_isEmpty) return const SizedBox.shrink();
+    return Container(
+      width: double.infinity,
+      child: Stack(
+        children: [
+          _imagesList.length > 0
+              ? _imagesList[_currentIndex]
+              : const SizedBox.shrink(),
+          _isMulti && _currentIndex != 0
+              ? _buildArrowButton(goBack: true)
+              : const SizedBox.shrink(),
+          _isMulti && _currentIndex != widget.images.length - 1
+              ? _buildArrowButton(goBack: false)
+              : const SizedBox.shrink(),
+        ],
+      ),
     );
   }
 
@@ -89,10 +94,14 @@ class PostImagesWebState extends State<PostImagesWeb> {
   }
 
   Widget _buildImageContainer({required String image}) {
-    return RepaintBoundary(
-      child: CachedNetworkImage(
-        filterQuality: FilterQuality.medium,
-        imageUrl: image,
+    return Container(
+      width: double.infinity,
+      child: RepaintBoundary(
+        child: CachedNetworkImage(
+          filterQuality: FilterQuality.medium,
+          imageUrl: image,
+          fit: BoxFit.fitHeight,
+        ),
       ),
     );
   }

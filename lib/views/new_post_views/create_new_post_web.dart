@@ -7,10 +7,10 @@ import 'package:forus/widgets/responsive.dart';
 
 import 'create_new_post.dart';
 
-class CreatePostContainer extends StatelessWidget {
+class CreateNewPostWeb extends StatelessWidget {
   final User currentUser;
 
-  const CreatePostContainer({
+  const CreateNewPostWeb({
     Key? key,
     required this.currentUser,
   }) : super(key: key);

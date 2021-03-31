@@ -33,9 +33,9 @@ class _PostContainerState extends State<PostContainer>
     print('post builds');
     return Card(
       elevation: 0.1,
-      margin: EdgeInsets.fromLTRB(0.0, 4.0, 0.0, 4.0),
+      margin: const EdgeInsets.fromLTRB(0.0, 4.0, 0.0, 4.0),
       child: Container(
-        padding: const EdgeInsets.symmetric(vertical: 8.0),
+        padding: const EdgeInsets.only(top: 8.0),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -54,6 +54,7 @@ class _PostContainerState extends State<PostContainer>
             Responsive.isDesktop(context)
                 ? PostImagesWeb(images: widget.post.imageUrl)
                 : PostImagesMobile(images: widget.post.imageUrl),
+            const Divider(height: 0.0),
             PostStats(post: widget.post),
           ],
         ),

@@ -5,12 +5,14 @@ class CircleButton extends StatelessWidget {
   final double iconSize;
   final Function() onPressed;
   final Color? color;
+  final String? tooltip;
 
   const CircleButton(
       {Key? key,
       required this.icon,
       required this.iconSize,
       required this.onPressed,
+      this.tooltip,
       this.color})
       : super(key: key);
 
@@ -28,6 +30,7 @@ class CircleButton extends StatelessWidget {
       ),
       child: Center(
         child: IconButton(
+          tooltip: tooltip,
           icon: Center(
             child: Icon(
               icon,
