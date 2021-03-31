@@ -37,7 +37,6 @@ class Application extends StatelessWidget {
         fontFamily: 'Helvetica, Arial, sans-serif',
       ),
       home: NavScreen(),
-      darkTheme: ThemeData.dark(),
       getPages: [
         GetPage(
           name: '/',

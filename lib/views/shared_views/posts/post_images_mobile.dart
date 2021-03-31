@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:forus/configs/color_palette.dart';
 
 class PostImagesMobile extends StatefulWidget {
   final List<String> images;
@@ -37,10 +38,10 @@ class PostImagesMobileState extends State<PostImagesMobile> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.grey,
       constraints: BoxConstraints(
         maxHeight: 300.0,
       ),
+      width: double.infinity,
       child: Stack(
         children: [
           PageView(
@@ -64,10 +65,11 @@ class PostImagesMobileState extends State<PostImagesMobile> {
         alignment: Alignment.topLeft,
         child: Container(
           padding: const EdgeInsets.all(4.0),
+          width: 45.0,
           child: Chip(
             visualDensity: VisualDensity.compact,
-            padding: EdgeInsets.all(0),
-            backgroundColor: Colors.black.withOpacity(0.1),
+            padding: const EdgeInsets.all(0),
+            backgroundColor: ColorPalette.primary.withOpacity(0.1),
             label: Text(
               '${_currentIndex + 1}\/${widget.images.length}',
               style: TextStyle(color: Colors.black, fontSize: 12.0),
@@ -79,11 +81,14 @@ class PostImagesMobileState extends State<PostImagesMobile> {
   }
 
   Widget _buildImageContainer({required String image}) {
-    return RepaintBoundary(
-      child: CachedNetworkImage(
-        filterQuality: FilterQuality.medium,
-        imageUrl: image,
-        fit: BoxFit.fitHeight,
+    return Container(
+      width: double.infinity,
+      child: RepaintBoundary(
+        child: CachedNetworkImage(
+          filterQuality: FilterQuality.medium,
+          imageUrl: image,
+          fit: BoxFit.fitHeight,
+        ),
       ),
     );
   }

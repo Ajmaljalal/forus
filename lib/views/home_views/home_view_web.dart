@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:get/get.dart';
@@ -6,7 +7,7 @@ import 'package:forus/models/models.dart';
 import 'package:forus/models/ui_models.dart';
 import 'package:forus/mock/data.dart';
 import 'package:forus/views/home_views/online_friends_list.dart';
-import 'package:forus/views/shared_views/posts/create_new_post_web.dart';
+import 'package:forus/views/new_post_views/create_new_post_web.dart';
 import 'package:forus/views/shared_views/posts/post_container.dart';
 import 'package:forus/views/shared_views/sidebars/left_side_nav_bar.dart';
 
@@ -22,13 +23,13 @@ class HomeScreenWeb extends StatefulWidget {
 class _HomeScreenWebState extends State<HomeScreenWeb>
     with AutomaticKeepAliveClientMixin {
   final _items = const [
-    LeftSideMenuItem(text: 'Home', icon: Icons.home),
-    LeftSideMenuItem(text: 'My Wallet', icon: Icons.attach_money),
-    LeftSideMenuItem(text: 'Friends', icon: Icons.people_alt_rounded),
-    LeftSideMenuItem(text: 'Pages', icon: Icons.pages),
-    LeftSideMenuItem(text: 'Play', icon: Icons.videocam),
-    LeftSideMenuItem(text: 'Rooms', icon: Icons.group_work_sharp),
-    LeftSideMenuItem(text: 'Store', icon: Icons.shopping_cart),
+    LeftSideMenuItem(text: 'Home', icon: CupertinoIcons.home),
+    LeftSideMenuItem(text: 'My Wallet', icon: CupertinoIcons.money_dollar),
+    LeftSideMenuItem(text: 'Friends', icon: CupertinoIcons.group),
+    LeftSideMenuItem(text: 'Pages', icon: CupertinoIcons.flag),
+    LeftSideMenuItem(text: 'Play', icon: CupertinoIcons.videocam),
+    LeftSideMenuItem(text: 'Rooms', icon: CupertinoIcons.cube_box),
+    LeftSideMenuItem(text: 'Store', icon: CupertinoIcons.shopping_cart),
   ];
 
   @override

@@ -94,7 +94,6 @@ List<Post> posts = [
     text: 'Check out these cool puppers',
     dateTime: '58m',
     imageUrl: [
-      'https://images.pexels.com/photos/6151691/pexels-photo-6151691.jpeg',
       'https://picsum.photos/id/3/680/400',
       'https://picsum.photos/id/30/680/400',
       'https://picsum.photos/id/13/680/400'
@@ -169,5 +168,143 @@ List<Post> posts = [
     likes: 1523,
     shares: 129,
     comments: 301,
-  )
+  ),
+  Post(
+    user: currentUser,
+    text: 'Check out these cool puppers',
+    dateTime: '58m',
+    imageUrl: [
+      'https://picsum.photos/id/3/680/400',
+      'https://picsum.photos/id/30/680/400',
+      'https://picsum.photos/id/13/680/400'
+    ],
+    likes: 1202,
+    comments: 184,
+    shares: 96,
+  ),
+  Post(
+    user: onlineUsers[5],
+    text:
+        'Please enjoy this placeholder text: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+    dateTime: '3hr',
+    imageUrl: [
+      'https://picsum.photos/id/7/680/400',
+      'https://picsum.photos/id/3/680/400',
+      'https://picsum.photos/id/30/680/400',
+      'https://picsum.photos/id/13/680/400'
+    ],
+    likes: 683,
+    comments: 79,
+    shares: 18,
+  ),
+  Post(
+    user: onlineUsers[4],
+    text: 'This is a very good boi.',
+    dateTime: '8hr',
+    imageUrl: [
+      'https://picsum.photos/id/6/680/400',
+      'https://picsum.photos/id/7/680/400',
+      'https://picsum.photos/id/3/680/400',
+      'https://picsum.photos/id/30/680/400',
+      'https://picsum.photos/id/13/680/400'
+    ],
+    likes: 894,
+    comments: 201,
+    shares: 27,
+  ),
+  Post(
+    user: onlineUsers[3],
+    text: 'Adventure 🏔',
+    dateTime: '15hr',
+    imageUrl: [
+      'https://picsum.photos/id/23/680/400',
+      'https://picsum.photos/id/6/680/400',
+      'https://picsum.photos/id/7/680/400',
+      'https://picsum.photos/id/3/680/400',
+      'https://picsum.photos/id/30/680/400',
+      'https://picsum.photos/id/13/680/400'
+    ],
+    likes: 722,
+    comments: 183,
+    shares: 42,
+  ),
+  Post(
+    user: onlineUsers[0],
+    text:
+        'More placeholder text for the soul: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+    dateTime: '1d',
+    imageUrl: ['https://picsum.photos/id/54/680/800'],
+    likes: 482,
+    comments: 37,
+    shares: 9,
+  ),
+  Post(
+    user: currentUser,
+    text: 'Check out these cool puppers',
+    dateTime: '58m',
+    imageUrl: [
+      'https://picsum.photos/id/3/680/400',
+      'https://picsum.photos/id/30/680/400',
+      'https://picsum.photos/id/13/680/400'
+    ],
+    likes: 1202,
+    comments: 184,
+    shares: 96,
+  ),
+  Post(
+    user: onlineUsers[5],
+    text:
+        'Please enjoy this placeholder text: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+    dateTime: '3hr',
+    imageUrl: [
+      'https://picsum.photos/id/7/680/400',
+      'https://picsum.photos/id/3/680/400',
+      'https://picsum.photos/id/30/680/400',
+      'https://picsum.photos/id/13/680/400'
+    ],
+    likes: 683,
+    comments: 79,
+    shares: 18,
+  ),
+  Post(
+    user: onlineUsers[4],
+    text: 'This is a very good boi.',
+    dateTime: '8hr',
+    imageUrl: [
+      'https://picsum.photos/id/6/680/400',
+      'https://picsum.photos/id/7/680/400',
+      'https://picsum.photos/id/3/680/400',
+      'https://picsum.photos/id/30/680/400',
+      'https://picsum.photos/id/13/680/400'
+    ],
+    likes: 894,
+    comments: 201,
+    shares: 27,
+  ),
+  Post(
+    user: onlineUsers[3],
+    text: 'Adventure 🏔',
+    dateTime: '15hr',
+    imageUrl: [
+      'https://picsum.photos/id/23/680/400',
+      'https://picsum.photos/id/6/680/400',
+      'https://picsum.photos/id/7/680/400',
+      'https://picsum.photos/id/3/680/400',
+      'https://picsum.photos/id/30/680/400',
+      'https://picsum.photos/id/13/680/400'
+    ],
+    likes: 722,
+    comments: 183,
+    shares: 42,
+  ),
+  Post(
+    user: onlineUsers[0],
+    text:
+        'More placeholder text for the soul: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+    dateTime: '1d',
+    imageUrl: ['https://picsum.photos/id/54/680/800'],
+    likes: 482,
+    comments: 37,
+    shares: 9,
+  ),
 ];

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:forus/configs/color_palette.dart';
-import 'package:forus/views/shared_views/posts/create_new_post.dart';
+import 'package:forus/views/new_post_views/create_new_post.dart';
 import 'package:get/get.dart';
 
 class CreateNewPostMobile extends StatelessWidget {
