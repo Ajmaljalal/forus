@@ -15,15 +15,17 @@ class PostButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
+      splashColor: Colors.white,
+      hoverColor: Colors.white,
       onTap: onTap,
       child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 12.0),
-        height: 25.0,
+        padding: const EdgeInsets.symmetric(horizontal: 10.0),
+        // height: 25.0,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             icon,
-            const SizedBox(width: 4.0),
+            const SizedBox(width: 3.0),
             Text(
               label,
               style: TextStyle(
