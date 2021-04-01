@@ -18,7 +18,7 @@ class PostStats extends StatelessWidget {
       child: SizedBox(
         height: 45.0,
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 15.0),
+          padding: const EdgeInsets.symmetric(horizontal: 10.0),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -50,7 +50,7 @@ class PostStats extends StatelessWidget {
           icon: Icon(
             CupertinoIcons.hand_thumbsup,
             color: Colors.grey[400],
-            size: 22.0,
+            size: 20.0,
           ),
           label: '${post.likes}',
           onTap: () => print('Like'),
@@ -59,7 +59,7 @@ class PostStats extends StatelessWidget {
           icon: Icon(
             CupertinoIcons.quote_bubble,
             color: Colors.grey[400],
-            size: 22.0,
+            size: 20.0,
           ),
           label: '${post.comments}',
           onTap: () => print('Comment'),
@@ -68,7 +68,7 @@ class PostStats extends StatelessWidget {
           icon: Icon(
             CupertinoIcons.reply,
             color: Colors.grey[400],
-            size: 22.0,
+            size: 20.0,
           ),
           label: '${post.shares}',
           onTap: () => print('Share'),
