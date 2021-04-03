@@ -14,6 +14,18 @@ class PostHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final _moreOptionsButton = IconButton(
+      icon: const Icon(Icons.more_horiz),
+      onPressed: () {
+        Get.defaultDialog(
+          title: 'What do you want to do?',
+          titleStyle: const TextStyle(height: 1.5),
+          radius: 10.0,
+          content: PopupMenu(),
+        );
+      },
+      splashRadius: 20.0,
+    );
     return Row(
       children: [
         RepaintBoundary(child: ProfileAvatar(imageUrl: post.user.imageUrl)),
@@ -32,14 +44,14 @@ class PostHeader extends StatelessWidget {
                 children: [
                   Text(
                     '${post.dateTime} • ',
-                    style: TextStyle(
-                      color: Colors.grey[600],
+                    style: const TextStyle(
+                      color: Colors.grey,
                       fontSize: 12.0,
                     ),
                   ),
-                  Icon(
+                  const Icon(
                     Icons.public,
-                    color: Colors.grey[600],
+                    color: Colors.grey,
                     size: 12.0,
                   ),
                 ],
@@ -47,18 +59,7 @@ class PostHeader extends StatelessWidget {
             ],
           ),
         ),
-        IconButton(
-          icon: const Icon(Icons.more_horiz),
-          onPressed: () {
-            Get.defaultDialog(
-              title: 'What do you want to do?',
-              titleStyle: TextStyle(height: 1.5),
-              radius: 10.0,
-              content: PopupMenu(),
-            );
-          },
-          splashRadius: 20.0,
-        ),
+        _moreOptionsButton,
       ],
     );
   }

@@ -18,35 +18,26 @@ class PostContainer extends StatefulWidget {
   _PostContainerState createState() => _PostContainerState();
 }
 
-class _PostContainerState extends State<PostContainer>
-    with AutomaticKeepAliveClientMixin {
-  // Calculate dominant color from ImageProvider
-  // Future<Color> getImagePalette(ImageProvider imageProvider) async {
-  //   final PaletteGenerator paletteGenerator =
-  //       await PaletteGenerator.fromImageProvider(imageProvider);
-  //   return paletteGenerator.lightMutedColor!.color;
-  // }
-
+class _PostContainerState extends State<PostContainer> {
   @override
   Widget build(BuildContext context) {
-    super.build(context);
     print('post builds');
     return Card(
       elevation: 0.1,
       margin: const EdgeInsets.fromLTRB(0.0, 4.0, 0.0, 4.0),
-      child: Container(
+      child: Padding(
         padding: const EdgeInsets.only(top: 8.0),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Container(
+            Padding(
               padding: const EdgeInsets.symmetric(horizontal: 12.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  RepaintBoundary(child: PostHeader(post: widget.post)),
+                  PostHeader(post: widget.post),
                   const SizedBox(height: 10.0),
-                  RepaintBoundary(child: Text(widget.post.text)),
+                  Text(widget.post.text),
                   const SizedBox(height: 17.0),
                 ],
               ),
@@ -61,7 +52,4 @@ class _PostContainerState extends State<PostContainer>
       ),
     );
   }
-
-  @override
-  bool get wantKeepAlive => false;
 }

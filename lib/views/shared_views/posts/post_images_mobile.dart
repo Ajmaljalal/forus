@@ -63,16 +63,13 @@ class PostImagesMobileState extends State<PostImagesMobile> {
     return Positioned.fill(
       child: Align(
         alignment: Alignment.topLeft,
-        child: Container(
-          padding: const EdgeInsets.all(4.0),
-          width: 45.0,
-          child: Chip(
-            visualDensity: VisualDensity.compact,
-            padding: const EdgeInsets.all(0),
-            backgroundColor: ColorPalette.primary.withOpacity(0.1),
-            label: Text(
+        child: Card(
+          color: ColorPalette.primary.withOpacity(0.5),
+          child: Padding(
+            padding: const EdgeInsets.all(4.0),
+            child: Text(
               '${_currentIndex + 1}\/${widget.images.length}',
-              style: TextStyle(color: Colors.black, fontSize: 12.0),
+              style: TextStyle(color: Colors.white, fontSize: 12.0),
             ),
           ),
         ),
@@ -81,14 +78,11 @@ class PostImagesMobileState extends State<PostImagesMobile> {
   }
 
   Widget _buildImageContainer({required String image}) {
-    return Container(
-      width: double.infinity,
-      child: RepaintBoundary(
-        child: CachedNetworkImage(
-          filterQuality: FilterQuality.medium,
-          imageUrl: image,
-          fit: BoxFit.fitHeight,
-        ),
+    return RepaintBoundary(
+      child: CachedNetworkImage(
+        filterQuality: FilterQuality.medium,
+        imageUrl: image,
+        fit: BoxFit.fitHeight,
       ),
     );
   }

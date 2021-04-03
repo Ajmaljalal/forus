@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:forus/controllers/home_controllers/bottom_nav_controller.dart';
 import 'package:forus/views/home_views/home_view_mobile.dart';
@@ -26,11 +27,11 @@ class _NavScreenMobileState extends State<NavScreenMobile> {
     Scaffold(),
   ];
   final List<IconData> _mobileIcons = const [
-    Icons.home,
-    Icons.play_circle_fill,
-    Icons.photo_library,
-    Icons.notifications,
-    Icons.more_horiz_rounded,
+    CupertinoIcons.home,
+    CupertinoIcons.play,
+    CupertinoIcons.photo,
+    CupertinoIcons.bell,
+    CupertinoIcons.ellipsis,
   ];
 
   @override
@@ -47,6 +48,7 @@ class _NavScreenMobileState extends State<NavScreenMobile> {
               children: _screens,
             ),
             bottomNavigationBar: Container(
+              height: 40.0,
               color: Colors.white,
               child: CustomTabBar(
                 icons: _mobileIcons,
@@ -62,21 +64,3 @@ class _NavScreenMobileState extends State<NavScreenMobile> {
     );
   }
 }
-
-// return Navigator(
-//       onGenerateRoute: (RouteSettings settings) {
-//         return MaterialPageRoute(
-//           settings: settings,
-//           builder: (BuildContext context) {
-//             switch(settings.name) {
-//               case '/':
-//                 return RootPage(destination: widget.destination);
-//               case '/list':
-//                 return ListPage(destination: widget.destination);
-//               case '/text':
-//                 return TextPage(destination: widget.destination);
-//             }
-//           },
-//         );
-//       },
-//     );

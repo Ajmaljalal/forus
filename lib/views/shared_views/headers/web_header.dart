@@ -7,13 +7,13 @@ import 'package:forus/widgets/circled_button.dart';
 import 'package:forus/widgets/user_card.dart';
 import 'package:get/get.dart';
 
-class Header extends StatelessWidget {
+class WebHeader extends StatelessWidget {
   final User currentUser;
   final List<IconData> icons;
   final int selectedIndex;
   final Function(int) onTap;
 
-  const Header({
+  const WebHeader({
     Key? key,
     required this.currentUser,
     required this.icons,

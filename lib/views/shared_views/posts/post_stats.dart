@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:forus/configs/color_palette.dart';
 import 'package:forus/models/post.dart';
-import 'package:forus/widgets/post_button.dart';
+import 'package:forus/widgets/customIconButton.dart';
+import 'package:forus/widgets/responsive.dart';
 
 class PostStats extends StatelessWidget {
   final Post post;
@@ -18,23 +18,16 @@ class PostStats extends StatelessWidget {
       child: SizedBox(
         height: 45.0,
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 10.0),
+          padding: EdgeInsets.symmetric(
+              horizontal: Responsive.isMobile(context) ? 10.0 : 15.0),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               _buildPostButtons(),
-              IconButton(
-                icon: Center(
-                  child: Icon(
-                    CupertinoIcons.money_dollar,
-                    color: ColorPalette.primary.withOpacity(0.5),
-                  ),
-                ),
-                iconSize: 22.0,
-                color: Colors.black,
-                onPressed: () {},
-                splashRadius: 20.0,
+              CustomIconButton(
+                icon: CupertinoIcons.money_dollar,
+                onTap: () => print('tipped'),
               ),
             ],
           ),
@@ -46,33 +39,46 @@ class PostStats extends StatelessWidget {
   Widget _buildPostButtons() {
     return Row(
       children: [
-        PostButton(
-          icon: Icon(
-            CupertinoIcons.hand_thumbsup,
-            color: Colors.grey[400],
-            size: 20.0,
-          ),
-          label: '${post.likes}',
+        _buildPostButton(
+          icon: CupertinoIcons.hand_thumbsup,
           onTap: () => print('Like'),
+          label: post.likes,
         ),
-        PostButton(
-          icon: Icon(
-            CupertinoIcons.quote_bubble,
-            color: Colors.grey[400],
-            size: 20.0,
-          ),
-          label: '${post.comments}',
+        const SizedBox(width: 10.0),
+        _buildPostButton(
+          icon: CupertinoIcons.bubble_left,
           onTap: () => print('Comment'),
+          label: post.comments,
         ),
-        PostButton(
-          icon: Icon(
-            CupertinoIcons.reply,
-            color: Colors.grey[400],
-            size: 20.0,
-          ),
-          label: '${post.shares}',
+        const SizedBox(width: 10.0),
+        _buildPostButton(
+          icon: CupertinoIcons.reply,
           onTap: () => print('Share'),
-        )
+          label: post.shares,
+        ),
+      ],
+    );
+  }
+
+  Widget _buildPostButton({
+    required IconData icon,
+    required Function() onTap,
+    required int label,
+  }) {
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        CustomIconButton(
+          icon: icon,
+          onTap: onTap,
+        ),
+        Text(
+          '$label',
+          style: const TextStyle(
+            color: Colors.grey,
+            fontSize: 11.0,
+          ),
+        ),
       ],
     );
   }
