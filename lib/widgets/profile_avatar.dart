@@ -19,13 +19,8 @@ class ProfileAvatar extends StatelessWidget {
       children: [
         CircleAvatar(
           radius: 20.0,
-          backgroundColor: ColorPalette.primary,
-          child: CircleAvatar(
-            radius: hasBorder ? 17.0 : 20.0,
-            backgroundColor: Colors.grey[200],
-            backgroundImage: NetworkImage(imageUrl),
-            // child: Text('A'),
-          ),
+          backgroundColor: Colors.grey[200],
+          backgroundImage: NetworkImage(imageUrl),
         ),
         isActive
             ? Positioned(
@@ -34,13 +29,9 @@ class ProfileAvatar extends StatelessWidget {
                 child: Container(
                   height: 15.0,
                   width: 15.0,
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                     color: ColorPalette.online,
                     shape: BoxShape.circle,
-                    border: Border.all(
-                      width: 2.0,
-                      color: Colors.white,
-                    ),
                   ),
                 ),
               )

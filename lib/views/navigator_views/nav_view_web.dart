@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:forus/views/friends_views.dart/friends_view_web.dart';
 import 'package:forus/views/home_views/home_view_web.dart';
-import 'package:forus/views/shared_views/web_header/header.dart';
+import 'package:forus/views/shared_views/headers/web_header.dart';
 import 'package:forus/views/wallet_veiws/wallet_view_web.dart';
 import 'package:get/get.dart';
 import 'package:forus/controllers/tabbars_controllers/left_side_bar_controller.dart';
@@ -50,7 +50,7 @@ class _NavScreenWebState extends State<NavScreenWeb> {
           child: Scaffold(
             appBar: PreferredSize(
               preferredSize: Size(_screenSize.width, 100.0),
-              child: Header(
+              child: WebHeader(
                 currentUser: currentUser,
                 icons: _desktopIcons,
                 selectedIndex: _selectedIndex,
@@ -65,21 +65,3 @@ class _NavScreenWebState extends State<NavScreenWeb> {
     );
   }
 }
-
-// return Navigator(
-//       onGenerateRoute: (RouteSettings settings) {
-//         return MaterialPageRoute(
-//           settings: settings,
-//           builder: (BuildContext context) {
-//             switch(settings.name) {
-//               case '/':
-//                 return RootPage(destination: widget.destination);
-//               case '/list':
-//                 return ListPage(destination: widget.destination);
-//               case '/text':
-//                 return TextPage(destination: widget.destination);
-//             }
-//           },
-//         );
-//       },
-//     );

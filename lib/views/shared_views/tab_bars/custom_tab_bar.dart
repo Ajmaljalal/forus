@@ -37,8 +37,8 @@ class CustomTabBar extends StatelessWidget {
                     e,
                     color: i == selectedIndex
                         ? ColorPalette.secondary
-                        : ColorPalette.primary.withOpacity(0.5),
-                    size: 30.0,
+                        : ColorPalette.primary,
+                    size: 25.0,
                   ),
                 ),
               ))
