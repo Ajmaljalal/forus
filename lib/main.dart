@@ -29,7 +29,7 @@ class Application extends StatelessWidget {
       // locale: DevicePreview.locale(context), // Add the locale here
       // builder: DevicePreview.appBuilder,
       debugShowCheckedModeBanner: false,
-      title: 'Batwa',
+      title: 'pywast',
       initialRoute: '/',
       defaultTransition: Transition.noTransition,
       theme: ThemeData(

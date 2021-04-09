@@ -5,6 +5,7 @@ import 'package:forus/views/shared_views/posts/post_images_mobile.dart';
 import 'package:forus/views/shared_views/posts/post_images_web.dart';
 import 'package:forus/views/shared_views/posts/post_stats.dart';
 import 'package:forus/widgets/responsive.dart';
+// import 'package:forus/widgets/video_player.dart';
 
 class PostContainer extends StatefulWidget {
   final Post post;
@@ -46,6 +47,7 @@ class _PostContainerState extends State<PostContainer> {
                 ? PostImagesWeb(images: widget.post.imageUrl)
                 : PostImagesMobile(images: widget.post.imageUrl),
             const Divider(height: 0.0),
+            // VideoPlayer(),
             PostStats(post: widget.post),
           ],
         ),
