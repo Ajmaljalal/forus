@@ -21,19 +21,21 @@ class _HomeScreenMobileState extends State<HomeScreenMobile>
   Widget build(BuildContext context) {
     super.build(context);
     print('mobile home');
-    return CustomScrollView(
-      slivers: [
-        MobileHeader(),
-        SliverList(
-          delegate: SliverChildBuilderDelegate(
-            (context, index) {
-              final Post post = posts[index];
-              return PostContainer(post: post);
-            },
-            childCount: posts.length,
+    return Scaffold(
+      body: CustomScrollView(
+        slivers: [
+          MobileHeader(),
+          SliverList(
+            delegate: SliverChildBuilderDelegate(
+              (context, index) {
+                final Post post = posts[index];
+                return PostContainer(post: post);
+              },
+              childCount: posts.length,
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 
