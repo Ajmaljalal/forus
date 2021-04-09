@@ -19,7 +19,7 @@ class MobileHeader extends StatelessWidget {
       floating: kIsWeb ? false : true,
       centerTitle: false,
       title: const Text(
-        'batwa',
+        'pywast',
         style: const TextStyle(
           color: ColorPalette.primary,
           fontSize: 20.0,
