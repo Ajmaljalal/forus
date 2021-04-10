@@ -21,7 +21,7 @@ class _HomeScreenMobileState extends State<HomeScreenMobile>
     super.build(context);
     print('mobile home');
     return ListView.builder(
-      cacheExtent: MediaQuery.of(context).size.height / 2,
+      // cacheExtent: MediaQuery.of(context).size.height / 2,
       itemCount: posts.length,
       itemBuilder: (context, index) {
         final Post post = posts[index];

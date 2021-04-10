@@ -44,7 +44,7 @@ class _NavScreenMobileState extends State<NavScreenMobile> {
         builder: (ctl) {
           return Scaffold(
             appBar: PreferredSize(
-              preferredSize: Size(double.infinity, 35.0),
+              preferredSize: Size(double.infinity, 45.0),
               child: MobileHeader(),
             ),
             body: PageView(
