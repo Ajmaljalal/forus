@@ -31,13 +31,14 @@ dependencies:
 
   cached_network_image: ^3.0.0-nullsafety
   material_design_icons_flutter: ^4.0.5855
-  get: ^4.0.0-nullsafety.2
+  get: ^4.1.3
   file_picker: ^3.0.0
   universal_platform: ^1.0.0-nullsafety
   palette_generator: ^0.3.0
   url_strategy: ^0.2.0
   image_picker: ^0.7.3
-  video_viewer: ^1.2.1
+  video_player: ^2.1.1
+  visibility_detector: ^0.2.0
 
   
 

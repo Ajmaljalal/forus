@@ -5,7 +5,7 @@ import 'package:forus/views/shared_views/posts/post_images_mobile.dart';
 import 'package:forus/views/shared_views/posts/post_images_web.dart';
 import 'package:forus/views/shared_views/posts/post_stats.dart';
 import 'package:forus/widgets/responsive.dart';
-// import 'package:forus/widgets/video_player.dart';
+import 'package:forus/widgets/video_player.dart';
 
 class PostContainer extends StatefulWidget {
   final Post post;
@@ -43,15 +43,33 @@ class _PostContainerState extends State<PostContainer> {
                 ],
               ),
             ),
-            Responsive.isDesktop(context)
-                ? PostImagesWeb(images: widget.post.imageUrl)
-                : PostImagesMobile(images: widget.post.imageUrl),
+            _buildImages(),
+            _buildVideo(),
             const Divider(height: 0.0),
-            // VideoPlayer(),
             PostStats(post: widget.post),
           ],
         ),
       ),
     );
+  }
+
+  Widget _buildImages() {
+    if (widget.post.imageUrl.length > 0) {
+      return Responsive.isDesktop(context)
+          ? PostImagesWeb(images: widget.post.imageUrl)
+          : PostImagesMobile(images: widget.post.imageUrl);
+    } else {
+      return const SizedBox.shrink();
+    }
+  }
+
+  Widget _buildVideo() {
+    if (widget.post.videoUrl != '') {
+      return widget.post.videoUrl != ''
+          ? VideoPlayerUtil(source: widget.post.videoUrl!)
+          : const SizedBox.shrink();
+    } else {
+      return const SizedBox.shrink();
+    }
   }
 }

@@ -5,6 +5,7 @@ class Post {
   final String text;
   final String? dateTime;
   final List<String> imageUrl;
+  final String? videoUrl;
   final int likes;
   final int comments;
   final int shares;
@@ -14,6 +15,7 @@ class Post {
     required this.text,
     this.dateTime,
     required this.imageUrl,
+    this.videoUrl = '',
     required this.likes,
     required this.comments,
     required this.shares,
