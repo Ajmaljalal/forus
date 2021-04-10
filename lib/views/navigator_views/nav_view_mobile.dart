@@ -1,10 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:forus/controllers/home_controllers/bottom_nav_controller.dart';
 import 'package:forus/views/home_views/home_view_mobile.dart';
+import 'package:forus/views/shared_views/headers/mobile_header.dart';
 import 'package:forus/views/shared_views/tab_bars/custom_tab_bar.dart';
 import 'package:forus/views/wallet_veiws/wallet_view_mobile.dart';
-import 'package:get/get.dart';
 
 class NavScreenMobile extends StatefulWidget {
   @override
@@ -42,6 +43,10 @@ class _NavScreenMobileState extends State<NavScreenMobile> {
         init: BottomNavController(),
         builder: (ctl) {
           return Scaffold(
+            appBar: PreferredSize(
+              preferredSize: Size(double.infinity, 35.0),
+              child: MobileHeader(),
+            ),
             body: PageView(
               controller: ctl.pageController,
               physics: const NeverScrollableScrollPhysics(),

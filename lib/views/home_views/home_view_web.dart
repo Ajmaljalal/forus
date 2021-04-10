@@ -87,7 +87,6 @@ class _HomeScreenWebState extends State<HomeScreenWeb>
                     init: MainFeedController(),
                     builder: (ctrl) {
                       return ListView.builder(
-                        cacheExtent: MediaQuery.of(context).size.height,
                         itemCount: ctrl.newsFeedPosts.length,
                         itemBuilder: (context, index) {
                           final Post post = ctrl.newsFeedPosts[index];

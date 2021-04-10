@@ -12,11 +12,9 @@ class MobileHeader extends StatelessWidget {
   }) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    return SliverAppBar(
+  AppBar build(BuildContext context) {
+    return AppBar(
       backgroundColor: Colors.white,
-      pinned: kIsWeb ? true : false,
-      floating: kIsWeb ? false : true,
       centerTitle: false,
       title: const Text(
         'pywast',
