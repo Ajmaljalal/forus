@@ -1,10 +1,11 @@
 import 'dart:math';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:forus/widgets/responsive.dart';
-import 'package:video_player/video_player.dart';
-import 'package:forus/widgets/customIconButton.dart';
+import 'package:forus/widgets/video_player/video_player_buttons.dart';
 import 'package:visibility_detector/visibility_detector.dart';
+import 'package:video_player/video_player.dart';
+import 'package:forus/configs/color_palette.dart';
+import 'package:forus/widgets/responsive.dart';
 
 class VideoPlayerUtil extends StatefulWidget {
   final String source;
@@ -26,7 +27,8 @@ class _VideoPlayerUtilState extends State<VideoPlayerUtil> {
     super.initState();
     if (!mounted) return;
     _controller = VideoPlayerController.network(widget.source);
-
+    _controller.setVolume(0.0);
+    _controller.setLooping(true);
     _initializeVideoPlayerFuture = _controller.initialize();
   }
 
@@ -38,7 +40,6 @@ class _VideoPlayerUtilState extends State<VideoPlayerUtil> {
 
   @override
   Widget build(BuildContext context) {
-    print(_controller.value.size.height);
     return FutureBuilder(
       future: _initializeVideoPlayerFuture,
       builder: (context, snapshot) {
@@ -49,8 +50,7 @@ class _VideoPlayerUtilState extends State<VideoPlayerUtil> {
                 key: Key(Random().nextDouble().toString()),
                 onVisibilityChanged: (visibilityInfo) {
                   var visiblePercentage = visibilityInfo.visibleFraction * 100;
-                  if (visiblePercentage > 70.0 &&
-                      !_controller.value.isPlaying) {
+                  if (visiblePercentage > 60.0) {
                     _controller.play();
                   }
                 },
@@ -58,27 +58,21 @@ class _VideoPlayerUtilState extends State<VideoPlayerUtil> {
                   aspectRatio: Responsive.isMobile(context)
                       ? _controller.value.aspectRatio
                       : 16 / 9,
-                  child: VideoPlayer(_controller),
+                  child: Container(
+                    color: ColorPalette.primary,
+                    child: VideoPlayer(_controller),
+                  ),
                 ),
               ),
-              Positioned(
-                bottom: 5.0,
-                right: 5.0,
-                child: CustomIconButton(
-                  onTap: () {
-                    _controller.value.volume > 0.0
-                        ? _controller.setVolume(0.0)
-                        : _controller.setVolume(1.0);
-                  },
-                  icon: CupertinoIcons.speaker_fill,
-                  color: Colors.white,
-                ),
-              )
+              VideoPlayerOverlayButtons(controller: _controller)
             ],
           );
         } else {
           return Center(
-            child: CircularProgressIndicator(),
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: const CircularProgressIndicator(),
+            ),
           );
         }
       },

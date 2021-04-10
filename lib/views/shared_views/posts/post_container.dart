@@ -5,7 +5,7 @@ import 'package:forus/views/shared_views/posts/post_images_mobile.dart';
 import 'package:forus/views/shared_views/posts/post_images_web.dart';
 import 'package:forus/views/shared_views/posts/post_stats.dart';
 import 'package:forus/widgets/responsive.dart';
-import 'package:forus/widgets/video_player.dart';
+import 'package:forus/widgets/video_player/video_player.dart';
 
 class PostContainer extends StatefulWidget {
   final Post post;
@@ -39,7 +39,7 @@ class _PostContainerState extends State<PostContainer> {
                   PostHeader(post: widget.post),
                   const SizedBox(height: 10.0),
                   Text(widget.post.text),
-                  const SizedBox(height: 17.0),
+                  const SizedBox(height: 10.0),
                 ],
               ),
             ),
@@ -64,7 +64,7 @@ class _PostContainerState extends State<PostContainer> {
   }
 
   Widget _buildVideo() {
-    if (widget.post.videoUrl != '') {
+    if (widget.post.videoUrl != null && widget.post.videoUrl != '') {
       return widget.post.videoUrl != ''
           ? VideoPlayerUtil(source: widget.post.videoUrl!)
           : const SizedBox.shrink();

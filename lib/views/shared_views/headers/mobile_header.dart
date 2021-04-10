@@ -15,6 +15,7 @@ class MobileHeader extends StatelessWidget {
   AppBar build(BuildContext context) {
     return AppBar(
       backgroundColor: Colors.white,
+      elevation: 0.3,
       centerTitle: false,
       title: const Text(
         'pywast',

@@ -108,8 +108,8 @@ List<Post> posts = [
         'Please enjoy this placeholder text: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
     dateTime: '3hr',
     imageUrl: [],
-    videoUrl:
-        'https://media.gettyimages.com/videos/jack-russell-begging-on-yellowflowered-ground-video-id1146454849',
+    // videoUrl:
+    //     'https://media.gettyimages.com/videos/jack-russell-begging-on-yellowflowered-ground-video-id1146454849',
     likes: 683,
     comments: 79,
     shares: 18,
@@ -135,7 +135,7 @@ List<Post> posts = [
     dateTime: '15hr',
     imageUrl: [],
     videoUrl:
-        'https://cdn.videvo.net/videvo_files/video/premium/video0001/small_watermarked/abuelos4k03_preview.webm',
+        'https://media.gettyimages.com/videos/jack-russell-begging-on-yellowflowered-ground-video-id1146454849',
     likes: 722,
     comments: 183,
     shares: 42,
