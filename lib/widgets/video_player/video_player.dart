@@ -1,11 +1,10 @@
-import 'dart:math';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:forus/widgets/video_player/video_player_buttons.dart';
-import 'package:visibility_detector/visibility_detector.dart';
-import 'package:video_player/video_player.dart';
-import 'package:forus/configs/color_palette.dart';
+import 'package:forus/controllers/video_player_controllers/video_controller.dart';
 import 'package:forus/widgets/responsive.dart';
+import 'package:get/get.dart';
+import 'package:video_player/video_player.dart';
+import 'package:forus/widgets/video_player/video_player_base.dart';
 
 class VideoPlayerUtil extends StatefulWidget {
   final String source;
@@ -30,6 +29,7 @@ class _VideoPlayerUtilState extends State<VideoPlayerUtil> {
     _controller.setVolume(0.0);
     _controller.setLooping(true);
     _initializeVideoPlayerFuture = _controller.initialize();
+    Get.put(VideoContoller());
   }
 
   @override
@@ -40,42 +40,25 @@ class _VideoPlayerUtilState extends State<VideoPlayerUtil> {
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder(
-      future: _initializeVideoPlayerFuture,
-      builder: (context, snapshot) {
-        if (snapshot.connectionState == ConnectionState.done) {
-          return Stack(
-            children: [
-              VisibilityDetector(
-                key: Key(Random().nextDouble().toString()),
-                onVisibilityChanged: (visibilityInfo) {
-                  var visiblePercentage = visibilityInfo.visibleFraction * 100;
-                  if (visiblePercentage > 60.0) {
-                    _controller.play();
-                  }
-                },
-                child: AspectRatio(
-                  aspectRatio: Responsive.isMobile(context)
-                      ? _controller.value.aspectRatio
-                      : 16 / 9,
-                  child: Container(
-                    color: ColorPalette.primary,
-                    child: VideoPlayer(_controller),
-                  ),
-                ),
-              ),
-              VideoPlayerOverlayButtons(controller: _controller)
-            ],
-          );
-        } else {
-          return Center(
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: const CircularProgressIndicator(),
+    final VideoContoller ctl = Get.find();
+    return Responsive.isDesktop(context)
+        ? MouseRegion(
+            onHover: (_) {
+              ctl.changeShowOverlay(show: true);
+            },
+            onExit: (_) {
+              ctl.changeShowOverlay(show: false);
+            },
+            child: VideoPlayerBase(
+              ctl: ctl,
+              initializeVideoPlayerFuture: _initializeVideoPlayerFuture,
+              controller: _controller,
             ),
+          )
+        : VideoPlayerBase(
+            ctl: ctl,
+            initializeVideoPlayerFuture: _initializeVideoPlayerFuture,
+            controller: _controller,
           );
-        }
-      },
-    );
   }
 }

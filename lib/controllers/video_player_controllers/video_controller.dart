@@ -5,6 +5,8 @@ class VideoContoller extends GetxController {
   bool isMute = true;
   bool isPlaying = true;
   bool showOverlay = false;
+  bool isFullScreen = false;
+  var videoPosition;
 
   changeMute({required VideoPlayerController controller}) {
     controller.value.volume > 0.0
@@ -22,6 +24,22 @@ class VideoContoller extends GetxController {
 
   changeShowOverlay({required bool show}) {
     showOverlay = show;
+    update();
+  }
+
+  goToFullScreen() {
+    isFullScreen = true;
+    update();
+  }
+
+  exitFullScreen() {
+    isFullScreen = false;
+    update();
+    Get.back();
+  }
+
+  setCurrentVideoPosition({required Duration currentPosition}) {
+    videoPosition = currentPosition;
     update();
   }
 }
