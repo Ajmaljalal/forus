@@ -136,7 +136,7 @@ List<Post> posts = [
     dateTime: '15hr',
     imageUrl: [],
     videoUrl:
-        'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4',
+        'https://firebasestorage.googleapis.com/v0/b/jamiat-eslah.appspot.com/o/zoom_0.mp4?alt=media&token=26d947a7-1eb7-43a9-b484-6cef58c83e4a',
     likes: 722,
     comments: 183,
     shares: 42,
