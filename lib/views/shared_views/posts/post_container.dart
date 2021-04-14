@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:forus/models/models.dart';
 import 'package:forus/views/shared_views/posts/post_header.dart';

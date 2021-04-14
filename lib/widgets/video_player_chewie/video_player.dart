@@ -1,4 +1,5 @@
 import 'package:chewie/chewie.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:forus/configs/color_palette.dart';
@@ -41,6 +42,8 @@ class _VideoPlayerUtilState extends State<VideoPlayerUtil> {
         autoPlay: true,
         looping: true,
         autoInitialize: true,
+        //TODO: need to change this in the future
+        allowFullScreen: kIsWeb ? false : true,
         errorBuilder: (context, errorMessage) {
           return Center(
             child: Text(
