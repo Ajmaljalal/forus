@@ -41,6 +41,9 @@ dependencies:
   visibility_detector: ^0.2.0
   chewie: ^1.0.0
   better_player:
+  firebase_core: ^1.0.3
+  cloud_firestore: ^1.0.5
+  firebase_storage: ^8.0.3
 
   
 
