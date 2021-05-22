@@ -37,6 +37,13 @@ dependencies:
   palette_generator: ^0.3.0
   url_strategy: ^0.2.0
   image_picker: ^0.7.3
+  video_player: ^2.1.1
+  visibility_detector: ^0.2.0
+  chewie: ^1.0.0
+  better_player:
+  firebase_core: ^1.2.0
+  cloud_firestore: ^1.0.5
+  firebase_storage: ^8.0.3
 
   
 

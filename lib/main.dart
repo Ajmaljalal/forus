@@ -6,13 +6,15 @@ import 'package:flutter/services.dart';
 import 'package:forus/controllers/home_controllers/home_controllers.dart';
 import 'package:forus/views/navigator_views/nav_view.dart';
 
-void main() {
+void main() async {
   // debugRepaintRainbowEnabled = true;
   SystemChrome.setSystemUIOverlayStyle(
     SystemUiOverlayStyle(
       statusBarColor: Colors.transparent, // transparent status bar
     ),
   );
+  await FirbaseService().initFirebase();
+
   // setPathUrlStrategy();
   runApp(
     // DevicePreview(
