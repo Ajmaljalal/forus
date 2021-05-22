@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "169411623598",
+    "project_id": "pywast-mvp",
+    "storage_bucket": "pywast-mvp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:169411623598:android:c6293594bd10b991610b3f",
+        "android_client_info": {
+          "package_name": "com.example.forus"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "169411623598-tf1sh9k4gck0kpl36mqqoo8vuq9vge4n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAc108rvty5-D6PzStD6C_1oXn1Sc8vPCQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "169411623598-tf1sh9k4gck0kpl36mqqoo8vuq9vge4n.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:forus/views/shared_views/headers/mobile_header.dart';
 
 class WalletScreenMobile extends StatefulWidget {
   const WalletScreenMobile({
@@ -16,13 +15,8 @@ class _WalletScreenMobileState extends State<WalletScreenMobile>
   Widget build(BuildContext context) {
     super.build(context);
     print('mobile home');
-    return CustomScrollView(
-      slivers: [
-        MobileHeader(),
-        SliverToBoxAdapter(
-          child: Center(child: Text('Friends')),
-        ),
-      ],
+    return Container(
+      child: Center(child: Text('Friends')),
     );
   }
 

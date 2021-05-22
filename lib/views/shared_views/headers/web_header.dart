@@ -45,7 +45,7 @@ class WebHeader extends StatelessWidget {
                 ctl.changeRout(rout: 'Home');
               },
               child: const Text(
-                'Batwa',
+                'pywast',
                 style: const TextStyle(
                   color: ColorPalette.primary,
                   fontSize: 28.0,

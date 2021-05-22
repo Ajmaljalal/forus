@@ -66,7 +66,7 @@ class PostImagesMobileState extends State<PostImagesMobile> {
         child: Card(
           color: ColorPalette.primary.withOpacity(0.5),
           child: Padding(
-            padding: const EdgeInsets.all(4.0),
+            padding: const EdgeInsets.symmetric(horizontal: 3.0, vertical: 1.0),
             child: Text(
               '${_currentIndex + 1}\/${widget.images.length}',
               style: TextStyle(color: Colors.white, fontSize: 12.0),

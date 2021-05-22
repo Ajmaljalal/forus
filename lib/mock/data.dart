@@ -107,12 +107,10 @@ List<Post> posts = [
     text:
         'Please enjoy this placeholder text: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
     dateTime: '3hr',
-    imageUrl: [
-      'https://picsum.photos/id/7/680/400',
-      'https://picsum.photos/id/3/680/400',
-      'https://picsum.photos/id/30/680/400',
-      'https://picsum.photos/id/13/680/400'
-    ],
+    imageUrl: [],
+    videoUrl:
+        'https://media.gettyimages.com/videos/jack-russell-begging-on-yellowflowered-ground-video-id1146454849',
+    // 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4',
     likes: 683,
     comments: 79,
     shares: 18,
@@ -136,14 +134,9 @@ List<Post> posts = [
     user: onlineUsers[3],
     text: 'Adventure 🏔',
     dateTime: '15hr',
-    imageUrl: [
-      'https://picsum.photos/id/23/680/400',
-      'https://picsum.photos/id/6/680/400',
-      'https://picsum.photos/id/7/680/400',
-      'https://picsum.photos/id/3/680/400',
-      'https://picsum.photos/id/30/680/400',
-      'https://picsum.photos/id/13/680/400'
-    ],
+    imageUrl: [],
+    videoUrl:
+        'https://firebasestorage.googleapis.com/v0/b/jamiat-eslah.appspot.com/o/zoom_0.mp4?alt=media&token=26d947a7-1eb7-43a9-b484-6cef58c83e4a',
     likes: 722,
     comments: 183,
     shares: 42,
