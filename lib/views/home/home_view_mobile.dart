@@ -3,7 +3,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:forus/models/models.dart';
 import 'package:forus/mock/data.dart';
-import 'package:forus/views/shared_views/posts/post_container.dart';
+import 'package:forus/views/shared/posts/post_container.dart';
 
 class HomeScreenMobile extends StatefulWidget {
   const HomeScreenMobile({

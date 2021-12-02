@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:forus/models/post.dart';
-import 'package:forus/views/shared_views/posts/post_more_options_menu.dart';
+import 'package:forus/views/shared/posts/post_more_options_menu.dart';
 import 'package:forus/widgets/profile_avatar.dart';
 import 'package:get/get.dart';
 

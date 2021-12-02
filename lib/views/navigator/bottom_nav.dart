@@ -2,17 +2,17 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:forus/controllers/home_controllers/bottom_nav_controller.dart';
-import 'package:forus/views/home_views/home_view_mobile.dart';
-import 'package:forus/views/shared_views/headers/mobile_header.dart';
-import 'package:forus/views/shared_views/tab_bars/custom_tab_bar.dart';
-import 'package:forus/views/wallet_veiws/wallet_view_mobile.dart';
+import 'package:forus/views/home/home_view_mobile.dart';
+import 'package:forus/views/shared/headers/mobile_header.dart';
+import 'package:forus/views/shared/tab_bars/custom_tab_bar.dart';
+import 'package:forus/views/wallet/wallet.dart';
 
-class NavScreenMobile extends StatefulWidget {
+class NavScreen extends StatefulWidget {
   @override
-  _NavScreenMobileState createState() => _NavScreenMobileState();
+  _NavScreenState createState() => _NavScreenState();
 }
 
-class _NavScreenMobileState extends State<NavScreenMobile> {
+class _NavScreenState extends State<NavScreen> {
   // @override
   // void dispose() {
   //   _pageController.dispose();
