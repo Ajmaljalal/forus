@@ -6,4 +6,9 @@ class User {
     required this.name,
     required this.imageUrl,
   });
+
+  Map<String, dynamic> toJson() => {
+        "name": name,
+        "imageUrl": imageUrl,
+      };
 }

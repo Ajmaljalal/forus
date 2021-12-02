@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:forus/services/firebase_services/firebase_init.dart';
+import 'package:forus/views/navigator/bottom_nav.dart';
 import 'package:get/get.dart';
-// import 'package:device_preview/device_preview.dart';
-// import 'package:url_strategy/url_strategy.dart';
 import 'package:flutter/services.dart';
 import 'package:forus/controllers/home_controllers/home_controllers.dart';
-import 'package:forus/views/navigator_views/nav_view.dart';
 
 void main() async {
   // debugRepaintRainbowEnabled = true;
@@ -16,12 +14,8 @@ void main() async {
     ),
   );
   await FirbaseService().initFirebase();
-  // setPathUrlStrategy();
   runApp(
-    // DevicePreview(
     Application(),
-    // builder: (context) => Application(),
-    // ),
   );
 }
 

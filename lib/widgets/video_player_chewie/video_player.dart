@@ -42,8 +42,7 @@ class _VideoPlayerUtilState extends State<VideoPlayerUtil> {
         autoPlay: true,
         looping: true,
         autoInitialize: true,
-        //TODO: need to change this in the future
-        allowFullScreen: kIsWeb ? false : true,
+        allowFullScreen:  true,
         errorBuilder: (context, errorMessage) {
           return Center(
             child: Text(

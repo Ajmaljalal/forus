@@ -3,8 +3,8 @@ import 'package:flutter/rendering.dart';
 import 'package:forus/controllers/home_controllers/main_feed_controller.dart';
 import 'package:forus/models/ui_models.dart';
 import 'package:forus/mock/data.dart';
-import 'package:forus/views/home_views/online_friends_list.dart';
-import 'package:forus/views/shared_views/sidebars/left_side_nav_bar.dart';
+import 'package:forus/views/home/online_friends_list.dart';
+import 'package:forus/views/shared/sidebars/left_side_nav_bar.dart';
 import 'package:get/get.dart';
 
 class FriendsScreenWeb extends StatefulWidget {

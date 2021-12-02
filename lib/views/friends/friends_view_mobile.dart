@@ -20,7 +20,6 @@ class _FriendsScreenMobileState extends State<FriendsScreenMobile>
     return CustomScrollView(
       slivers: [
         SliverAppBar(
-          brightness: Brightness.light,
           backgroundColor: Colors.white,
           title: const Text(
             'friends',

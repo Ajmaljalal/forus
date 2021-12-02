@@ -2,7 +2,6 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:forus/widgets/responsive.dart';
 import 'package:get/get.dart';
-import 'package:file_picker/file_picker.dart';
 import 'package:forus/controllers/home_controllers/main_feed_controller.dart';
 import 'package:forus/controllers/posts_controllers/create_new_post_controller.dart';
 import 'package:forus/configs/color_palette.dart';
@@ -175,9 +174,7 @@ class _CreateNewPostModalState extends State<CreateNewPostModal> {
       color: ColorPalette.primary,
       tooltip: tooltip,
       onPressed: () async {
-        kIsWeb
-            ? await ctl.pickFilesWeb(type: FileType.image)
-            : await ctl.pickFileMobile(
+         await ctl.pickFileMobile(
                 type: fileType,
                 from: fileFrom,
               );

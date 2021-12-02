@@ -1,6 +1,4 @@
 import 'dart:io';
-
-import 'package:file_picker/file_picker.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -13,21 +11,6 @@ class CreateNewPostController extends GetxController {
   //   posts.toList().add(post);
   //   createPostInProgress = false;
   // }
-
-  Future<void> pickFilesWeb({required FileType type}) async {
-    try {
-      var picked = await FilePicker.platform.pickFiles(
-        allowMultiple: true,
-        type: type,
-      );
-      if (picked != null) {
-        picked.files.map((file) => images.add(file.bytes)).toList();
-        update();
-      }
-    } catch (err) {
-      throw err;
-    }
-  }
 
   Future pickFileMobile({
     required String type,

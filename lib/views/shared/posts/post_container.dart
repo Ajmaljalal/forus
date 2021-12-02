@@ -1,11 +1,9 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:forus/models/models.dart';
-import 'package:forus/views/shared_views/posts/post_header.dart';
-import 'package:forus/views/shared_views/posts/post_images_mobile.dart';
-import 'package:forus/views/shared_views/posts/post_images_web.dart';
-import 'package:forus/views/shared_views/posts/post_stats.dart';
-import 'package:forus/widgets/responsive.dart';
+import 'package:forus/views/shared/posts/post_header.dart';
+import 'package:forus/views/shared/posts/post_images_mobile.dart';
+import 'package:forus/views/shared/posts/post_stats.dart';
 import 'package:forus/widgets/video_player_chewie/video_player.dart';
 
 class PostContainer extends StatefulWidget {
@@ -56,9 +54,7 @@ class _PostContainerState extends State<PostContainer> {
 
   Widget _buildImages() {
     if (widget.post.imageUrl.length > 0) {
-      return Responsive.isDesktop(context)
-          ? PostImagesWeb(images: widget.post.imageUrl)
-          : PostImagesMobile(images: widget.post.imageUrl);
+      return PostImagesMobile(images: widget.post.imageUrl);
     } else {
       return const SizedBox.shrink();
     }
